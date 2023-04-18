@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="63px" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_Wifi4</title>
+    <g id="ic_Wifi4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组" transform="translate(0.000000, -0.000000)" opacity="0">
+            <g id="icon规范模版66备份-12">
+                <rect id="Background" fill="#04B28E" x="0" y="7.93547046e-13" width="63.0000022" height="63"></rect>
+                <g id="Grid" opacity="0.5" transform="translate(0.000002, 0.000000)" stroke="#FFFFFF" stroke-width="0.5">
+                    <ellipse id="Inner-Circle" cx="31.4999989" cy="31.5" rx="15.7500006" ry="15.75"></ellipse>
+                    <ellipse id="Circle" cx="31.4999989" cy="31.5" rx="22.7500008" ry="22.75"></ellipse>
+                    <rect id="Horizontal-Rectangle" x="8.74999809" y="15.75" width="45.5000016" height="31.5" rx="3.5"></rect>
+                    <path d="M12.2499978,15.75 L50.7499978,15.75 C52.6829944,15.75 54.2499978,17.3170034 54.2499978,19.25 L54.2499978,43.75 C54.2499978,45.6829966 52.6829944,47.25 50.7499978,47.25 L12.2499978,47.25 C10.3170012,47.25 8.74999778,45.6829966 8.74999778,43.75 L8.74999778,19.25 C8.74999778,17.3170034 10.3170012,15.75 12.2499978,15.75 Z" id="Vertical-Rectangle" transform="translate(31.499998, 31.500000) rotate(-270.000000) translate(-31.499998, -31.500000) "></path>
+                    <rect id="Square" x="12.2499982" y="12.25" width="38.5000014" height="38.5" rx="3.5"></rect>
+                    <line x1="63.0000044" y1="63" x2="2.21844735e-06" y2="7.90367771e-13" id="Path-2-Copy" transform="translate(31.500001, 31.500000) scale(-1, 1) translate(-31.500001, -31.500000) "></line>
+                    <line x1="63.0000044" y1="63" x2="2.21844735e-06" y2="7.90367771e-13" id="Path-2-Copy"></line>
+                </g>
+            </g>
+        </g>
+        <g id="编组" transform="translate(9.625000, 16.830000)">
+            <circle id="椭圆形" fill="#000000" cx="22.0229284" cy="27.5625" r="2.625"></circle>
+            <path d="M31.897306,20.3112922 C29.1361749,18.2696252 25.7205213,17.0625 22.0229284,17.0625 C18.3184309,17.0625 14.8969265,18.2741376 12.1330897,20.3227384" id="路径" stroke="#000000" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M37.386177,14.4269728 C33.2555244,10.8878756 27.8888902,8.75 22.0229284,8.75 C16.1483143,8.75 10.7745019,10.894187 6.64140971,14.4426424" id="路径" stroke="#000000" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M43.6519229,7.70696841 C37.5977018,2.88295312 29.92824,0 21.5854284,0 C13.462057,0 5.97707905,2.73328761 0,7.33035749" id="路径" stroke="#000000" stroke-width="3" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

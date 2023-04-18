@@ -1,0 +1,19 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "CustomDemo"
+include ':app'
+include ':tablayoutactivity'
+include ':basedesignlayout'
+include ':recyclerviewdemo'
+include ':gifdemo'
+include ':greendaodemo'
+include ':glidedemo'
+include ':eventbusdemo'
+include ':selectdeleterecyclerviewdemo'
+include ':customutildemo'

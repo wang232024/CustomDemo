@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--椭圆-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+android:shape="oval">
+    <!--设置图形的尺寸
+        不过默认获取的还是View的宽度和高度-->
+    <size android:width="60dp"
+        android:height="60dp" />
+
+    <solid android:color="#4097e6" />
+
+    <!--渐变效果
+        注意此处使用了gradientRadius这个属性值
+        只有type="radial"时才有效
+    -->
+    <gradient
+        android:endColor="#4097e6"
+        android:startColor="#FFFFFF"
+        android:gradientRadius="50dp"
+        android:type="radial"/>
+</shape>

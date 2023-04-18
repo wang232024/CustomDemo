@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 内边距须直接设置在item中 -->
+    <item android:top="32dp"
+        android:bottom="32dp"
+        android:left="32dp"
+        android:right="32dp">
+        <shape android:shape="rectangle">
+            <size android:width="300dp"
+                android:height="300dp" />
+            <solid android:color="#00ff00" />
+            <corners android:radius="100dp" />
+        </shape>
+    </item>
+</layer-list>

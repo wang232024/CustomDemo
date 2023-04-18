@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:visibility="gone"
+        android:background="#00ff08"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_alertdialog"
+        android:text="alertdialog"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_popupwindow"
+        android:text="popupwindow"
+        app:layout_constraintTop_toBottomOf="@id/btn_alertdialog"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+    <!--android:id="@android:id/list" findViewById(android.R.id.list)来获取该View -->
+    <Button
+        android:id="@android:id/list"
+        android:text="456"
+        app:layout_constraintTop_toBottomOf="@id/btn_popupwindow"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.example.custom.view.DialogRefresh
+        android:id="@+id/dialogrefresh"
+        app:layout_constraintBottom_toTopOf="@id/layout_tip"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="#99ccff"
+        android:layout_width="800dp"
+        android:layout_height="300dp" />
+
+    <include
+        android:id="@+id/layout_tip"
+        layout="@layout/layout_tip" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

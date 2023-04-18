@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="AppTheme">
+        <!--设置statusbar。true:系统默认色浅灰，false:浅灰-->
+        <item name="android:windowTranslucentStatus">false</item>
+        <!--设置navigationbar。true:系统默认色浅灰，false:黑色-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--即需要设置设置statusbar，设置navigationbar-->
+        <!--true true      上半透明  下半透明-->
+        <!--true false     上半透明  下黑-->
+        <!--false true     上透明    下半透明-->
+        <!--false false    上白      下黑-->
+
+        <!--设置状态栏颜色为透明，immersion才起作用，否则为系统默认蓝色primaryDark-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+<!--    <style name="layout_activity_title" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowActionBar">false</item>-->
+<!--    </style>-->
+    <style name="layout_activity_title" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTitleSize">44dip</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+
+    <!--自定义dialog-->
+    <style name="CustomDialog" parent="Animation.AppCompat.Dialog">
+        <!--背景颜色及和透明程度-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@color/black</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="WelcomeHeadingAppearance" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/welcome_heading</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="WelcomeContentAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/welcome_content</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

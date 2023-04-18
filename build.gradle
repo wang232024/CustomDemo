@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.1"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        // GreenDao插件
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    //android开发版本配置
+    appName = "CustomDemo"
+    compileSdkVersion = 31
+    buildToolsVersion = "31.0.0"
+    applicationId = "com.example.custom"
+    minSdkVersion = 30
+    targetSdkVersion = 30
+    versionCode = 10000001
+    versionName = "1.0.0.001"
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="400dp"
+        android:layout_height="800dp" >
+
+        <ImageView
+            android:id="@+id/id_login_logo"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="300dp"
+            android:layout_height="150dp" />
+
+        <EditText
+            android:id="@+id/id_et_login_account"
+            android:inputType="textPersonName"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:hint="请输入您的用户名"
+            app:layout_constraintTop_toBottomOf="@id/id_login_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <EditText
+            android:id="@+id/id_et_login_pwd"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:drawableStart="@android:drawable/ic_lock_idle_lock"
+            android:hint="请输入您的密码"
+            app:layout_constraintTop_toBottomOf="@id/id_et_login_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <CheckBox
+            android:id="@+id/id_login_pwd_eye"
+            android:button="@null"
+            android:background="@drawable/selector_pwd_eye"
+            app:layout_constraintEnd_toEndOf="@id/id_et_login_pwd"
+            app:layout_constraintTop_toTopOf="@id/id_et_login_pwd"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+
+        <CheckBox
+            android:id="@+id/id_login_remember"
+            android:text="记住密码"
+            android:checked="false"
+            android:textSize="15sp"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_et_login_pwd"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/id_login_pwd_change"
+            android:text="修改密码"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_et_login_pwd"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/id_btn_register"
+            android:text="注册"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/id_btn_login"
+            app:layout_constraintTop_toBottomOf="@id/id_login_pwd_change"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/id_btn_login"
+            android:text="登录"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/id_btn_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_login_pwd_change"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

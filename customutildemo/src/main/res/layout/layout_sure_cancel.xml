@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/alertdialog_width"
+    android:layout_height="@dimen/alertdialog_height"
+    android:background="@drawable/shape_layout_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal_15"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1504"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal_30"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3083"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal_57"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5789"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal_75"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8796"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical_06"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.0612"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical_47"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4796"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical_52"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5204"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical_93"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9388"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--layout_height为0dp时出错-->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="string"
+        android:textColor="#DE000000"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_vertical_06"
+        app:layout_constraintRight_toRightOf="@id/guide_vertical_93"
+        app:layout_constraintBottom_toBottomOf="@id/guide_horizontal_30"
+        app:layout_constraintTop_toTopOf="@id/guide_horizontal_15" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_button_cancel_bg"
+        android:stateListAnimator="@null"
+        android:text="取消"
+        android:textColor="#DE000000"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/guide_horizontal_57"
+        app:layout_constraintBottom_toBottomOf="@id/guide_horizontal_75"
+        app:layout_constraintLeft_toLeftOf="@id/guide_vertical_06"
+        app:layout_constraintRight_toRightOf="@id/guide_vertical_47" />
+
+    <Button
+        android:id="@+id/btn_sure"
+        android:text="确定"
+        android:background="@drawable/shape_button_sure_bg"
+        android:textSize="15sp"
+        android:stateListAnimator="@null"
+        android:textColor="#FFFFFFFF"
+        app:layout_constraintTop_toTopOf="@id/guide_horizontal_57"
+        app:layout_constraintBottom_toBottomOf="@id/guide_horizontal_75"
+        app:layout_constraintLeft_toLeftOf="@id/guide_vertical_52"
+        app:layout_constraintRight_toRightOf="@id/guide_vertical_93"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

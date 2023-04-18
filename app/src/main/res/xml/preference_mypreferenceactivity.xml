@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header
+        android:fragment="com.example.custom.fragment.Prefs1Fragment"
+        android:icon="@drawable/ic_baseline_looks_1_48"
+        android:summary="设置第一个参数"
+        android:title="设置1" />
+
+    <header
+        android:fragment="com.example.custom.fragment.Prefs2Fragment"
+        android:icon="@drawable/ic_baseline_looks_2_48"
+        android:summary="设置第二个参数"
+        android:title="设置2" />
+
+</preference-headers>

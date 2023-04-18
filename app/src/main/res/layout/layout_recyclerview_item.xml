@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_recyclerview_item_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--item的宽高在RecyclerView的布局文件中由参考线计算得出，并在CustomRecyclerViewAdapter中进行调整-->
+    <!--子控件通过参考线定位left, right, top, bottom-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_dot_left"
+        app:layout_constraintGuide_percent="0.081632653061225"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_dot_right"
+        app:layout_constraintGuide_percent="0.16734693877551"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_dot_top"
+        app:layout_constraintGuide_percent="0.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_dot_bottom"
+        app:layout_constraintGuide_percent="0.24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+    <ImageView
+        android:id="@+id/id_recyclerview_item_dot"
+        app:layout_constraintLeft_toLeftOf="@id/img_recyclerview_item_dot_left"
+        app:layout_constraintRight_toRightOf="@id/img_recyclerview_item_dot_right"
+        app:layout_constraintTop_toTopOf="@id/img_recyclerview_item_dot_top"
+        app:layout_constraintBottom_toBottomOf="@id/img_recyclerview_item_dot_bottom"
+        android:background="@drawable/ic_icon_dot"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_state_left"-->
+<!--        app:layout_constraintGuide_percent="0.218367346938775"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_state_right"-->
+<!--        app:layout_constraintGuide_percent="0.938775510204082"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_state_top"-->
+<!--        app:layout_constraintGuide_percent="0.103333333333333"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_state_bottom"-->
+<!--        app:layout_constraintGuide_percent="0.37"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/id_recyclerview_item_state"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="#A6A6A7"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/img_recyclerview_item_state_left"-->
+<!--        app:layout_constraintRight_toRightOf="@id/img_recyclerview_item_state_right"-->
+<!--        app:layout_constraintTop_toTopOf="@id/img_recyclerview_item_state_top"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/img_recyclerview_item_state_bottom"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp" />-->
+
+    <TextView
+        android:id="@+id/id_recyclerview_item_name"
+        android:textSize="16sp"
+        android:textColor="#A6A6A7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_location_left"-->
+<!--        app:layout_constraintGuide_percent="0.079591836734694"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_location_right"-->
+<!--        app:layout_constraintGuide_percent="0.573469387755102"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_location_top"-->
+<!--        app:layout_constraintGuide_percent="0.666666666666667"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal" />-->
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/img_recyclerview_item_location_bottom"-->
+<!--        app:layout_constraintGuide_percent="0.826666666666667"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/id_recyclerview_item_location"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="#A6A6A7"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/img_recyclerview_item_location_left"-->
+<!--        app:layout_constraintRight_toRightOf="@id/img_recyclerview_item_location_right"-->
+<!--        app:layout_constraintTop_toTopOf="@id/img_recyclerview_item_location_top"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/img_recyclerview_item_location_bottom"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp" />-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_view_left"
+        app:layout_constraintGuide_percent="0.848979591836735"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_view_right"
+        app:layout_constraintGuide_percent="0.938775510204082"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_view_top"
+        app:layout_constraintGuide_percent="0.753333333333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/img_recyclerview_item_view_bottom"
+        app:layout_constraintGuide_percent="0.9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+    <CheckBox
+        android:id="@+id/id_recyclerview_item_select"
+        android:button="@null"
+        android:background="@drawable/selector_select"
+        app:layout_constraintLeft_toLeftOf="@id/img_recyclerview_item_view_left"
+        app:layout_constraintRight_toRightOf="@id/img_recyclerview_item_view_right"
+        app:layout_constraintTop_toTopOf="@id/img_recyclerview_item_view_top"
+        app:layout_constraintBottom_toBottomOf="@id/img_recyclerview_item_view_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

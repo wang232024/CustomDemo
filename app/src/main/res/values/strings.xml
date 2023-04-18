@@ -1,0 +1,142 @@
+<resources>
+    <string name="app_name">CustomDemo</string>
+
+    <string name="title">标题</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string-array name="string_array_name">
+        <item>test0</item>
+        <item>test1</item>
+        <item>test2</item>
+        <item>test3</item>
+        <item>test4</item>
+        <item>test5</item>
+        <item>test6</item>
+    </string-array>
+
+    <string-array name="activity_names">
+        <item>Login</item>
+        <item>Excel</item>
+        <item>Download</item>
+        <item>Widget</item>
+        <item>Window</item>
+        <item>EditText</item>
+        <item>ImmersionCode</item>
+        <item>ImmersionColor</item>
+        <item>ImmersionPicture</item>
+        <item>CustomView</item>
+        <item>Style</item>
+        <item>LockPattern</item>
+        <item>Welcome</item>
+        <item>Animation</item>
+        <item>Bezier</item>
+        <item>Broadcast</item>
+        <item>Intent</item>
+        <item>Fragment</item>
+        <item>Settings</item>
+        <item>TabLayout</item>
+        <item>BaseDesignLayout</item>
+        <item>RecyclerViewDemo</item>
+        <item>Gif</item>
+        <item>GreenDao</item>
+        <item>Glide</item>
+        <item>EventBus</item>
+        <item>SelectDeleteRecyclerView</item>
+        <item>Util</item>
+    </string-array>
+
+    <string-array name="clear_set">
+        <!--%3$s表示替换掉第三个参数-->
+        <item>未选择任何操作,可用内存为%3$s</item>
+        <item>杀死了%1$d个进程,可用内存为%3$s</item>
+        <item>清除了%2$s缓存,可用内存为%3$s</item>
+        <item>杀死了%1$d个进程,清除了%2$s缓存,可用内存为%3$s</item>
+        <item>关闭悬浮图标.</item>
+    </string-array>
+
+    <!--根据语言不同，数量对应不同的复数形式-->
+    <plurals name="numberOfSongsAvailable">
+        <item quantity="one">%d song found.</item>
+        <item quantity="other">%d songs found.</item>
+    </plurals>
+
+    <string name="hint_operator_name">你好</string>
+    <string name="hello">Hello World, Date!</string>
+    <string name="strInputAccHint">输入帐号</string>
+    <string name="strAccInputLabel">帐号</string>
+    <string name="strPswInputLabel">密码</string>
+    <string name="login">登 录</string>
+    <string name="register">注 册</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取 消</string>
+    <string name="account_empty">用户名为空，请重新输入！</string>
+    <string name="pwd_empty">密码为空，请重新输入！</string>
+    <string name="pwd_check_same">两次输入的密码不一致</string>
+    <string name="pwd_not_fit_user">密码不正确，请重新输入！</string>
+    <string name="pwd_new_empty">新密码为空，请重新输入！</string>
+    <string name="pwd_check_empty">密码确认为空，请重新输入！</string>
+    <string name="pwd_not_the_same">密码确认不正确，请重新输入密码！</string>
+    <string name="register_fail">注册用户失败，请重新尝试！</string>
+    <string name="register_success">注册成功！</string>
+    <string name="resetpwd_fail">密码修改失败，请重新尝试！</string>
+    <string name="resetpwd_success">密码修改成功！</string>
+    <string name="login_success">登陆成功！</string>
+    <string name="cancel_success">注销成功！</string>
+    <string name="login_fail">登录失败！请输入正确的用户名与密码！</string>
+    <string name="cancel_fail">注销失败！请输入正确的用户名与密码！</string>
+<!--    <string name="name_already_exist">用户名【<xliff:g example="tom" id="id1">%1$s</xliff:g>】已存在，请重新输入！</string>-->
+<!--    <string name="name_not_exist">用户名【<xliff:g example="tom" id="id1">%1$s</xliff:g>】不存在，请重新输入！</string>-->
+<!--    <string name="user_login_success">用户：<xliff:g example="tom" id="id2">%1$s</xliff:g>登录，欢迎光临！</string>-->
+
+    <!--引导页-->
+    <string name="welcom_head_01">学会合理运用时间</string>
+    <string name="welcom_content_01">利用好学习时间,在单位时间里高效的学习.</string>
+    <string name="welcom_head_02">学会分享</string>
+    <string name="welcom_content_02">分享即可以帮助他人,也可以提升自己,何乐而不为.</string>
+    <string name="welcom_head_03">学会利用网络</string>
+    <string name="welcom_content_03">通过互联网,可以学到任何我们想学的知识,所以你要利用好.</string>
+    <string name="welcom_head_04">提高效率,少熬夜</string>
+    <string name="welcom_content_04">设法提高我们的工作效率,而不是延长我们的工作时间.</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string-array name="sex_name">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="sex_value">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+</resources>

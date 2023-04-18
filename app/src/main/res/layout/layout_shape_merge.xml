@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/view1"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/shape_rectangle"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <View
+        android:id="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/shape_oval"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <View
+        android:id="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/shape_line"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <View
+        android:id="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@id/view3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/shape_ring"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+</merge>
