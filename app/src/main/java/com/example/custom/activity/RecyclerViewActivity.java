@@ -70,7 +70,7 @@ public class RecyclerViewActivity extends Activity {
             ImmersionCodeActivity.class,        ImmersionColorActivity.class,   ImmersionPictureActivity.class,
             CustomViewActivity.class,           StyleActivity.class,            LockPatternActivity.class,
             WelcomActivity.class,               AnimatorActivity.class,         BezierActivity.class,
-            BroadcastActivity.class,            IntentActivity.class,           FragmentActivity.class,
+            DealWithActivity.class,             IntentActivity.class,           FragmentActivity.class,
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
             RecyclerViewDemoActivity.class,     GifActivity.class,              GreenDaoActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
