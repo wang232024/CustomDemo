@@ -1,10 +1,14 @@
 package com.example.custom.activity;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +17,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.custom.R;
+import com.example.custom.service.CustomService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class IntentActivity extends AppCompatActivity {
     private static final String TAG = "wtx_IntentActivity";
+    private Context mContext = IntentActivity.this;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,28 @@ public class IntentActivity extends AppCompatActivity {
         initData();
         initView();
         xmlStrings();
+
+        Button test = findViewById(R.id.test);
+        test.setOnClickListener(v -> {
+//            Intent intent = new Intent(MainActivity.this, CustomService.class);
+//            startForegroundService(intent);
+////            startService(intent);
+
+            boolean bin = mContext.bindService(
+                    new Intent(mContext, CustomService.class),
+                    new ServiceConnection() {
+                        @Override
+                        public void onServiceConnected(ComponentName name, IBinder service) {
+                            Log.i("wtx", "onServiceConnected, name:" + name + ", service:" + service);
+                        }
+
+                        @Override
+                        public void onServiceDisconnected(ComponentName name) {
+                            Log.i("wtx", "onServiceDisconnected, name:" + name);
+                        }
+                    },  Context.BIND_AUTO_CREATE);
+            Log.i("wtx", "bindService, bin:" + bin);
+        });
     }
 
     private void initData() {
