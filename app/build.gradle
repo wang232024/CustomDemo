@@ -92,4 +92,5 @@ dependencies {
     implementation project(path: ':customutildemo')
     implementation project(path: ':touchdemo')
     implementation project(path: ':propertyanimatordemo')
+    implementation project(path: ':downloaddemo')
 }
