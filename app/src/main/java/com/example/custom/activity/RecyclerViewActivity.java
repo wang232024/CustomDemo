@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.custom.example.RecyclerViewDemoActivity;
 import com.custom.savedb.GreenDaoActivity;
+import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
 import com.example.custom.recyclerview.ItemBean;
 import com.example.custom.recyclerview.ItemSpaceDecoration;
@@ -73,7 +74,7 @@ public class RecyclerViewActivity extends Activity {
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
             RecyclerViewDemoActivity.class,     GifActivity.class,              GreenDaoActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
-            UtilActivity.class,                 TouchActivity.class,
+            UtilActivity.class,                 TouchActivity.class,            PropertyAnimatorActivity.class
     };
 
     @Override
