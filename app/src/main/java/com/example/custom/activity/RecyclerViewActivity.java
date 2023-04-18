@@ -32,6 +32,7 @@ import com.example.custom.recyclerview.CustomRecyclerViewAdapter;
 import com.example.custom.util.ShareUtil;
 import com.example.custom.util.UriUtil;
 import com.example.customutil.UtilActivity;
+import com.example.demo.TouchActivity;
 import com.example.eventbus.EventBusActivity;
 import com.example.gifdemo.GifActivity;
 import com.example.glide.GlideActivity;
@@ -72,7 +73,7 @@ public class RecyclerViewActivity extends Activity {
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
             RecyclerViewDemoActivity.class,     GifActivity.class,              GreenDaoActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
-            UtilActivity.class,
+            UtilActivity.class,                 TouchActivity.class,
     };
 
     @Override

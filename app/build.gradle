@@ -90,4 +90,5 @@ dependencies {
     implementation project(path: ':eventbusdemo')
     implementation project(path: ':selectdeleterecyclerviewdemo')
     implementation project(path: ':customutildemo')
+    implementation project(path: ':touchdemo')
 }
