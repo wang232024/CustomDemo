@@ -52,7 +52,7 @@ public class DialogRefresh extends View {
         String xmlns="http://schemas.android.com/apk/res/android";
         int xmlRes = attrs.getAttributeResourceValue(xmlns, "background", -1);
         String xmlText = attrs.getAttributeValue(xmlns, "text");
-        float layout_width = attrs.getAttributeFloatValue(xmlns, "layout_width", -1);
+        float layout_width = attrs.getAttributeIntValue(xmlns, "layout_width", -1);
 
         Log.i(TAG, "layout_width:" + layout_width);
 

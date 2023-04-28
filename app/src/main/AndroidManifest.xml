@@ -33,11 +33,16 @@
 
         <activity android:name=".activity.DownloadActivity" />
 
-        <activity android:name=".activity.WidgetActivity">
+        <activity android:name=".activity.WidgetActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="abc" />-->
+<!--&lt;!&ndash;                <category android:name="android.intent.category.DEFAULT" />&ndash;&gt;-->
+<!--            </intent-filter>-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.VIEW" />-->
 <!--                <action android:name="android.intent.action.SENDTO" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--&lt;!&ndash;                <category android:name="android.intent.category.DEFAULT" />&ndash;&gt;-->
 <!--                <category android:name="android.intent.category.BROWSABLE" />-->
 <!--                <data android:scheme="mailto" />-->
 <!--            </intent-filter>-->
@@ -52,6 +57,22 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="custom.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="custom.action0" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="custom.action_1" />
+                <category android:name="custom.category" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="custom.action_2" />
+                <category android:name="custom.category" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

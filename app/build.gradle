@@ -63,7 +63,9 @@ android {
                     outputFileName = "${prefix}_${buildDate}_release.apk"
                 } else {
 //                    outputFileName = "${prefix}_V${versionName}_V${versionCode}_debug.apk"
-                    outputFileName = "${prefix}_${buildDate}_debug.apk"
+                    outputFileName = "debug.apk"
+
+                    // cd /home/wtx/my/wtx/CustomDemo/app/build/outputs/apk/debug; adb uninstall com.example.custom; adb install -t debug.apk
                 }
             }
     }
