@@ -2,10 +2,13 @@ package com.example.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewOutlineProvider;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 /**
@@ -17,16 +20,42 @@ import android.widget.LinearLayout;
  */
 public class TouchActivity extends AppCompatActivity {
     private static final String TAG = "wtx";
+    private LinearLayout mContainerOut;
+    private LinearLayout mContainerIn;
+
+    private float mElevation = 0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch);
 
-        LinearLayout mContainerOut = findViewById(R.id.container_out);
-        LinearLayout mContainerIn = findViewById(R.id.container_in);
+        mContainerOut = findViewById(R.id.container_out);
+        mContainerIn = findViewById(R.id.container_in);
         View view = findViewById(R.id.view);
         view.setClickable(true);
+
+        Button touch_add = findViewById(R.id.touch_add);
+        Button touch_del = findViewById(R.id.touch_del);
+
+        touch_add.setOnClickListener(mOnClickListener);
+        touch_del.setOnClickListener(mOnClickListener);
+
+        // 父容器裁剪
+        mContainerOut.setClipToOutline(true);
+        mContainerOut.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRoundRect(
+                        0,
+                        0,
+                        view.getWidth(),
+                        view.getHeight(),
+                        50
+                );
+                outline.setAlpha(0);
+            }
+        });
 
         mContainerOut.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -103,5 +132,16 @@ public class TouchActivity extends AppCompatActivity {
         }
         return super.onTouchEvent(event);
     }
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (R.id.touch_add == v.getId()) {
+
+            } else if (R.id.touch_del == v.getId()) {
+
+            }
+        }
+    };
 
 }

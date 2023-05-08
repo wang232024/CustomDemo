@@ -8,8 +8,9 @@
     tools:context=".TouchActivity">
 
     <com.example.demo.ContainerOut
+        android:layout_marginTop="30dp"
         android:id="@+id/container_out"
-        android:background="#00ff04"
+        android:background="#33ff0000"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_width="400dp"
@@ -18,7 +19,7 @@
         <com.example.demo.ContainerIn
             android:id="@+id/container_in"
             android:orientation="vertical"
-            android:background="#99ccfe"
+            android:background="#3300ff00"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:gravity="center"
@@ -29,11 +30,31 @@
                 android:id="@+id/view"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:background="#9999ff"
+                android:background="#330000ff"
                 android:layout_width="200dp"
                 android:layout_height="200dp" />
         </com.example.demo.ContainerIn>
 
     </com.example.demo.ContainerOut>
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/touch_add"
+            android:text="add"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/touch_del"
+            android:text="del"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>
