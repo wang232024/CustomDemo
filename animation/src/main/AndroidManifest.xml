@@ -9,13 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomDemo">
         <activity
-            android:name=".PropertyAnimatorActivity"
+            android:name="com.example.animation.AnimationActivity"
             android:exported="true">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".PropertyAnimatorSecondActivity" />
+        <activity android:name="com.example.animation.PropertyAnimatorActivity" />
+        <activity android:name="com.example.animation.PropertyAnimatorSecondActivity" />
     </application>
 
 </manifest>

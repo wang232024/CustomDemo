@@ -1,5 +1,6 @@
 package com.example.custom.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -12,7 +13,9 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,10 +33,9 @@ import com.example.custom.span.SpanManager;
 
 import com.example.custom.R;
 
-import java.util.List;
-
 public class EditTextActivity extends AppCompatActivity {
     private static final String TAG = "wtx_EditTextActivity";
+    private InputMethodManager mInputMethodManager;
     private EditText editText;
     private EditText et_color;
     private Button btn_italic;
@@ -53,6 +55,32 @@ public class EditTextActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_edittextactivity);
+
+        mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        /**
+            1. popupwindow把软键盘挡住的解决办法：
+            popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
+            popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+            2.
+            popwdindow中editText 默认是不弹出软件盘， 想弹出先popWindow.setFocusable(true)，然后//弹出软键盘
+            InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+            | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            SOFT_INPUT_STATE_HIDDEN设置软键盘的状态为隐藏，如果不设置，默认弹出
+
+            3. Android软键盘弹出时把布局顶上去，控件乱套解决方法：
+             方法一：在你的activity中的oncreate中setContentView之前写上这个代码
+             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+             注意，这种设置可能导致一个后果，如果中间的列表内容过长，会让toolbar被推倒不显示的位置。
+
+             方法二：在项目的AndroidManifest.xml文件中界面对应的<activity>里加入android:windowSoftInputMode="stateVisible|adjustResize"，这样会让屏幕整体上移。如果加上的是
+             android:windowSoftInputMode="adjustPan"这样键盘就会覆盖屏幕。
+             方法三：把顶级的layout替换成ScrollView，或者说在顶级的Layout上面再加一层ScrollView的封装。这样就会把软键盘和输入框一起滚动了，软键盘会一直处于底部。
+        **/
 
         initData();
 
@@ -148,6 +176,33 @@ public class EditTextActivity extends AppCompatActivity {
         }
     }
 
+    // 判断点击事件是否在EditText之外
+    public  boolean isClickOutEdiText(View v, MotionEvent event) {
+        if (v instanceof EditText) {
+            int[] leftTop = {0, 0};
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            return !(event.getX() > left) || !(event.getX() < right)
+                    || !(event.getY() > top) || !(event.getY() < bottom);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        // 在activity中，点击edittext之外的地方，隐藏软键盘
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View view = getCurrentFocus();
+            if (isClickOutEdiText(view, ev)) {
+                mInputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -211,5 +266,30 @@ public class EditTextActivity extends AppCompatActivity {
             }
         }
     };
+
+    /**
+        SpannableString
+        1. BackgroundColorSpan 背景色
+        2. ClickableSpan 文本可点击，有点击事件
+        3. ForegroundColorSpan 文本颜色（前景色）
+        4. MaskFilterSpan 修饰效果，如模糊(BlurMaskFilter). 浮雕(EmbossMaskFilter)
+        5. MetricAffectingSpan 父类，一般不用
+        6. RasterizerSpan 光栅效果
+        7. StrikethroughSpan 删除线（中划线）
+        8. SuggestionSpan 相当于占位符
+        9. UnderlineSpan 下划线
+        10. AbsoluteSizeSpan 绝对大小（文本字体）
+        11. DynamicDrawableSpan 设置图片，基于文本基线或底部对齐。
+        12. ImageSpan 图片
+        13. RelativeSizeSpan 相对大小（文本字体）
+        14. ReplacementSpan 父类，一般不用
+        15. ScaleXSpan 基于x轴缩放
+        16. StyleSpan 字体样式：粗体. 斜体等
+        17. SubscriptSpan 下标（数学公式会用到）
+        18. SuperscriptSpan 上标（数学公式会用到）
+        19. TextAppearanceSpan 文本外貌（包括字体. 大小. 样式和颜色）
+        20. TypefaceSpan 文本字体
+        21. URLSpan 文本超链接
+    **/
 
 }

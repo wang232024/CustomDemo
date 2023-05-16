@@ -1,27 +1,26 @@
-package com.example.custom.activity;
+package com.example.animation;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.custom.R;
-import com.example.custom.animator.PointEvaluator;
-import com.example.custom.animator.Point;
-import com.example.custom.animator.UniformSpeed;
-
-public class AnimatorActivity extends AppCompatActivity {
+public class AnimationActivity extends AppCompatActivity {
     private static final String TAG = "wtx_AnimatorActivity";
     private TextView mTextView;
     private Button mButton;
+    private ImageView mAnimationImg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +37,9 @@ public class AnimatorActivity extends AppCompatActivity {
             }
         });
 
+        mAnimationImg = findViewById(R.id.animation_img);
+        init();
+
         // ValueAnimator只能针对值进行动画改变，如果我们需要关联到View的变化，就需要设置监听事件，根据值得变化手动去操作这个View变化。
 //        baseValueAnimator();
 //        baseValueAnimatorOfObject();
@@ -46,6 +48,15 @@ public class AnimatorActivity extends AppCompatActivity {
 
 //        baseAnimatorSet();
         baseAnimatorSetBuild();
+    }
+
+    private void init() {
+        AnimationDrawable animationDrawable = (AnimationDrawable) mAnimationImg.getBackground();
+        if (animationDrawable != null) {
+            animationDrawable.setOneShot(false);
+            animationDrawable.start();
+            animationDrawable.selectDrawable(0);
+        }
     }
 
     /**
@@ -181,5 +192,4 @@ public class AnimatorActivity extends AppCompatActivity {
         UniformSpeed uniformSpeed = new UniformSpeed();
         valueAnimator.setInterpolator(uniformSpeed);
     }
-
 }

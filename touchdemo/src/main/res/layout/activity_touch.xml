@@ -40,6 +40,32 @@
     <LinearLayout
         android:layout_margin="30dp"
         android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/touch_tv1"
+            android:text="1234567890"
+            android:textSize="30sp"
+            android:background="#3399ccff"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/touch_tv2"
+            android:text="1234567890"
+            android:textSize="30sp"
+            android:background="#6699ccff"
+            android:includeFontPadding="false"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+            <!--includeFontPadding用来设置文本框是否包含顶部和底部留白（左右两侧默认没有留白），将其设置为false，TextView就会取消2px的留白-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/touch_add"

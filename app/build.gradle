@@ -93,6 +93,6 @@ dependencies {
     implementation project(path: ':selectdeleterecyclerviewdemo')
     implementation project(path: ':customutildemo')
     implementation project(path: ':touchdemo')
-    implementation project(path: ':propertyanimatordemo')
     implementation project(path: ':downloaddemo')
+    implementation project(path: ':animation')
 }

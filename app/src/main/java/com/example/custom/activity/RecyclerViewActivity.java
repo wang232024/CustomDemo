@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.custom.example.RecyclerViewDemoActivity;
 import com.custom.savedb.GreenDaoActivity;
+import com.example.animation.AnimationActivity;
 import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
 import com.example.custom.RetrofitRxjavaDownloadActivity;
@@ -70,7 +71,7 @@ public class RecyclerViewActivity extends Activity {
             WidgetActivity.class,               WindowActivity.class,           EditTextActivity.class,
             ImmersionCodeActivity.class,        ImmersionColorActivity.class,   ImmersionPictureActivity.class,
             CustomViewActivity.class,           StyleActivity.class,            LockPatternActivity.class,
-            WelcomActivity.class,               AnimatorActivity.class,         BezierActivity.class,
+            WelcomActivity.class,               AnimationActivity.class,         BezierActivity.class,
             DealWithActivity.class,             IntentActivity.class,           FragmentActivity.class,
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
             RecyclerViewDemoActivity.class,     GifActivity.class,              GreenDaoActivity.class,

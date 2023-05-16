@@ -1,4 +1,4 @@
-package com.example.custom.animator;
+package com.example.animation;
 
 public class Point {
     private int x;

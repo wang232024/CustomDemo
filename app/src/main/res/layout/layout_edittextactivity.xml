@@ -48,9 +48,15 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <!--android:background="@null" 去掉下划线-->
+        <!--android:textCursorDrawable="@null" 颜色与textcolor一致-->
         <EditText
             android:layout_width="50dp"
+            android:background="@null"
+            android:textCursorDrawable="@null"
             android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/btn_size"
             android:text="size"

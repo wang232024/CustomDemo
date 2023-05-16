@@ -58,6 +58,13 @@ public class TimeUtil {
         return sdf.format(new Date(milliseconds));
     }
 
+    // 获取当前设置的时区
+    public static String getCurrentTimeZone() {
+        TimeZone tz = TimeZone.getDefault();
+        String strTz = tz.getDisplayName(false, TimeZone.SHORT);
+        return strTz;
+    }
+
     //    测试网址  https://tool.chinaz.com/Tools/unixtime.aspx
     public static void testTimeUtil() {
         long timeStamp = getFormatedDateLong("2019-11-28_14-26-35_729");

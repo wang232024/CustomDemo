@@ -1,4 +1,4 @@
-package com.example.custom.animator;
+package com.example.animation;
 
 import android.animation.TypeEvaluator;
 

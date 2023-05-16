@@ -1,7 +1,20 @@
+从源码中的逻辑来看的话,判断一个intent是不是显式声明的点就是component和package,只要这两个有一个生效就不算是隐式声明的.
+其他App中调用另一个app中的Activity，即打开第三方应用。
+"com.example.myapplication"是另一个app的包名，这个Acitivity不需要在清单文件中声明。
 
 ### Explicit Intent
 Explicit Intent明确的指定了要启动的Acitivity，比如以下Java代码：
 Intent intent= new Intent(this, B.class)；
+
+方法一：
+Intent intent1 = new Intent();
+// 包名 包名+类名（全路径）
+intent1.setClassName("com.example.myapplication", "com.example.myapplication.MainActivity");
+
+方法二：
+Intent intent2 = new Intent();
+ComponentName componentName = new ComponentName("com.example.myapplication", "com.example.myapplication.MainActivity");
+intent2.setComponent(componentName);
 
 ### Implicit Intent
 Implicit Intent没有明确的指定要启动哪个Activity，而是通过设置一些Intent Filter来让系统去筛选合适的Acitivity去启动。

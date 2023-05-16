@@ -128,7 +128,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.BezierActivity" />
         <activity android:name=".activity.DealWithActivity"
             android:label="BroadcastActivity_label">

@@ -80,6 +80,13 @@ public class WindowActivity extends Activity {
         }
     };
 
+    /**
+     * Popwindow 没有继承Viewgroup，因此最外层布局属性的宽高无效，如果布局设置wrap_content则以实际资源大小为准
+     * 如果需要设置popupwindow所弹出框体的大小，需要在代码中进行设置：
+     * popupWindow.setWidth((int) getResources().getDimension(R.dimen.tip_width));
+     * popupWindow.setHeight((int) getResources().getDimension(R.dimen.tip_height));
+     * popupWindow可能会报token is not valid的错误，这是由于popupWindow启动太快而token未拿到造成的，需要延时启动。
+     */
     private void createPopupWindow() {
         float width = getResources().getDimension(R.dimen.alertdialog_width);
         float height = getResources().getDimension(R.dimen.alertdialog_height);
