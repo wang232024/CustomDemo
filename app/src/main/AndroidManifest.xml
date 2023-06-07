@@ -144,9 +144,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.ImmersionActivity" />
         <activity android:name=".activity.ImmersionCodeActivity" />
         <activity android:name=".activity.ImmersionColorActivity" android:theme="@style/TranslucentTheme" />
         <activity android:name=".activity.ImmersionPictureActivity" android:theme="@style/TranslucentTheme" />
+
         <activity android:name=".activity.FragmentActivity"
             android:label="test_activity_label"
             android:theme="@style/layout_activity_title"

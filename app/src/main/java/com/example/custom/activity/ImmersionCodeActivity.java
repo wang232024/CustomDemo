@@ -1,15 +1,21 @@
 package com.example.custom.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.custom.R;
+import com.example.custom.util.PictureUtil;
 
 public class ImmersionCodeActivity extends AppCompatActivity {
 
@@ -47,7 +53,27 @@ public class ImmersionCodeActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();        // 去掉默认的标题栏
         actionBar.hide();
+
+        ImageView imgImmersionBg = findViewById(R.id.img_immersion_bg);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
+//        Bitmap bmp = doBlur(bitmap, 0, false);
+//        imgImmersionBg.setImageBitmap(bmp);
+
+        Button btnGaussian = findViewById(R.id.btn_gaussian);
+        btnGaussian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radius += 1;
+                if (radius > 100) {
+                    radius = 0;
+                }
+                Log.i("wtx", "radius:" + radius);
+                Bitmap bmp = PictureUtil.doBlur(bitmap, radius);
+                imgImmersionBg.setImageBitmap(bmp);
+            }
+        });
     }
+    private int radius = 0;
 
 //    /**
 //     * 一般用于全屏化的游戏或者视频设置中，即实现沉浸式模式。

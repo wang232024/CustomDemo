@@ -27,9 +27,7 @@
         <item>Widget</item>
         <item>Window</item>
         <item>EditText</item>
-        <item>ImmersionCode</item>
-        <item>ImmersionColor</item>
-        <item>ImmersionPicture</item>
+        <item>Immersion</item>
         <item>CustomView</item>
         <item>Style</item>
         <item>LockPattern</item>

@@ -21,6 +21,10 @@ android {
         versionName rootProject.ext.versionName
         project.archivesBaseName = rootProject.ext.appName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 以下是高斯模糊相关的API
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
     }
 
     buildTypes {

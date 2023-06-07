@@ -69,7 +69,7 @@ public class RecyclerViewActivity extends Activity {
     private static final Class<?>[] mActivityCls = {
             LoginActivity.class,                ExcelActivity.class,            DownloadActivity.class,
             WidgetActivity.class,               WindowActivity.class,           EditTextActivity.class,
-            ImmersionCodeActivity.class,        ImmersionColorActivity.class,   ImmersionPictureActivity.class,
+            ImmersionActivity.class,
             CustomViewActivity.class,           StyleActivity.class,            LockPatternActivity.class,
             WelcomActivity.class,               AnimationActivity.class,         BezierActivity.class,
             DealWithActivity.class,             IntentActivity.class,           FragmentActivity.class,
