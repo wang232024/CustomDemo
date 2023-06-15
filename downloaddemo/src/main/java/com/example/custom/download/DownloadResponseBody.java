@@ -2,7 +2,7 @@ package com.example.custom.download;
 
 import android.util.Log;
 
-import com.example.custom.utils.KLog;
+import com.example.util.KLog;
 
 import java.io.IOException;
 

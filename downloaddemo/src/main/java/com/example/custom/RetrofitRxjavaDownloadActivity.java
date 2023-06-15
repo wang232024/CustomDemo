@@ -6,13 +6,10 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.custom.download.DownloadInfo;
 import com.example.custom.download.DownloadManager;
-import com.example.custom.utils.KLog;
-
+import com.example.util.KLog;
 
 public class RetrofitRxjavaDownloadActivity extends AppCompatActivity {
     private static final String TAG = RetrofitRxjavaDownloadActivity.class.getName();

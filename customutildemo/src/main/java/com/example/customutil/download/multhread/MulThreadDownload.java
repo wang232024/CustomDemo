@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.example.customutil.util.FileUtil;
+import com.example.util.FileUtil;
 
 /**
  * 多线程下载

@@ -1,8 +1,7 @@
 package com.example.customutil;
 
 import android.app.Application;
-
-import com.example.customutil.util.Logger;
+import com.example.util.Logger;
 
 public class CrashApplication extends Application {
 

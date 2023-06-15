@@ -1,15 +1,10 @@
 package com.example.custom.download.breakpoint;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.util.Log;
-
 import com.example.custom.download.multhread.ThreadDownload;
-import com.example.custom.util.FileUtil;
-
+import com.example.util.FileUtil;
 import java.io.File;
-import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;

@@ -5,17 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
-import com.example.custom.R;
-import com.example.custom.util.AssetsUtil;
-import com.example.custom.util.ExcelUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
+import com.example.util.AssetsUtil;
+import com.example.util.ExcelUtils;
+import com.example.custom.R;
 
 public class ExcelActivity extends Activity {
     private static final String TAG = "wtx_ExcelActivity";
