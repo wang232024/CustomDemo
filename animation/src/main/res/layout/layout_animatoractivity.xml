@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/animation_btn"
         android:text="btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -14,21 +14,29 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/animation_tv"
         android:text="test"
-        app:layout_constraintLeft_toLeftOf="@id/btn"
-        app:layout_constraintRight_toRightOf="@id/btn"
-        app:layout_constraintTop_toBottomOf="@id/btn"
+        app:layout_constraintLeft_toLeftOf="@id/animation_btn"
+        app:layout_constraintRight_toRightOf="@id/animation_btn"
+        app:layout_constraintTop_toBottomOf="@id/animation_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/animation_img"
+        android:visibility="gone"
         android:background="@drawable/animationdrawable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="300dp"
         android:layout_height="300dp" />
+
+    <View
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#00008f"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

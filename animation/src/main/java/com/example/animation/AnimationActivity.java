@@ -4,16 +4,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.FloatProperty;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.util.KLog;
 
 
 public class AnimationActivity extends AppCompatActivity {
@@ -21,19 +25,76 @@ public class AnimationActivity extends AppCompatActivity {
     private TextView mTextView;
     private Button mButton;
     private ImageView mAnimationImg;
+    private AnimatorSet animatorSet;
+    boolean switchBtn = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_animatoractivity);
 
-        mTextView = findViewById(R.id.tv);
+        mTextView = findViewById(R.id.animation_tv);
 
-        mButton = findViewById(R.id.btn);
+        mButton = findViewById(R.id.animation_btn);
+
+        FloatProperty<View> TRANSLATION_X = new FloatProperty<View>("test_identify") {      // 针对任意命名
+            private static final int TRANSLATION = 10;
+
+            @Override
+            public void setValue(View view, float value) {
+                KLog.i("wtx", "setValue:" + value);
+                view.setTranslationX(TRANSLATION * value);
+            }
+
+            @Override
+            public Float get(View view) {
+                return view.getTranslationX();
+            }
+        };
+
+        FloatProperty<View> TRANSLATION_Y = new FloatProperty<View>("test_identify") {      // 针对任意命名
+            private static final int TRANSLATION = 10;
+
+            @Override
+            public void setValue(View view, float value) {
+                KLog.i("wtx", "setValue:" + value);
+                view.setTranslationY(TRANSLATION * value);
+            }
+
+            @Override
+            public Float get(View view) {
+                return view.getTranslationY();
+            }
+        };
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "click.");
+
+                if (!switchBtn) {
+                    switchBtn = true;
+                    ObjectAnimator anim_lt = ObjectAnimator.ofFloat(mButton, TRANSLATION_X, 0, 1);
+                    ObjectAnimator anim_rt = ObjectAnimator.ofFloat(mButton, TRANSLATION_Y, 0, 1);
+                    ObjectAnimator anim_lb = ObjectAnimator.ofFloat(mButton, TRANSLATION_X, 1, 0);
+                    ObjectAnimator anim_rb = ObjectAnimator.ofFloat(mButton, TRANSLATION_Y, 1, 0);
+                    anim_lt.setRepeatCount(ValueAnimator.INFINITE);
+                    anim_rt.setRepeatCount(ValueAnimator.INFINITE);
+                    anim_lb.setRepeatCount(ValueAnimator.INFINITE);
+                    anim_rb.setRepeatCount(ValueAnimator.INFINITE);
+
+                    animatorSet = new AnimatorSet();
+                    animatorSet.playSequentially(
+                            anim_lt,
+                            anim_rt,
+                            anim_lb,
+                            anim_rb
+                    );
+                    animatorSet.setDuration(100).start();
+                } else {
+                    switchBtn = false;
+                    animatorSet.cancel();
+                }
             }
         });
 
