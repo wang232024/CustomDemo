@@ -3,13 +3,16 @@ package com.example.demo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Outline;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.example.util.KLog;
 
 /**
  * 1. 控件clickable属性决定其是否默认消耗点击事件。能点击时将消耗掉点击事件，onTouchEvent返回true;否则不消耗点击事件，onTouchEvent返回false，事件继续向上层传递，后续事件由上层接管。
@@ -20,8 +23,9 @@ import android.widget.LinearLayout;
  */
 public class TouchActivity extends AppCompatActivity {
     private static final String TAG = "wtx";
-    private LinearLayout mContainerOut;
-    private LinearLayout mContainerIn;
+    private ContainerOut mContainerOut;
+    private ContainerIn mContainerIn;
+    private CustomView mCustomView;
 
     private float mElevation = 0f;
 
@@ -30,10 +34,14 @@ public class TouchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch);
 
+        // AppCompatActivity 隐藏Toolbar
+        getSupportActionBar().hide();
+
         mContainerOut = findViewById(R.id.container_out);
         mContainerIn = findViewById(R.id.container_in);
-        View view = findViewById(R.id.view);
-        view.setClickable(true);
+        mCustomView = findViewById(R.id.customview);
+//        mCustomView.setClickable(true);
+        KLog.i(TAG, "isClickable:" + mCustomView.isClickable());
 
         Button touch_add = findViewById(R.id.touch_add);
         Button touch_del = findViewById(R.id.touch_del);
@@ -57,81 +65,69 @@ public class TouchActivity extends AppCompatActivity {
             }
         });
 
-        mContainerOut.setOnTouchListener(new View.OnTouchListener() {
+//        mContainerOut.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                KLog.v(TAG, "ContainerOut onTouch");
+//                return false;
+//            }
+//        });
+//        mContainerIn.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                KLog.d(TAG, "ContainerIn onTouch");
+//                return false;
+////                return true;
+//            }
+//        });
+//
+        mCustomView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.e(TAG, "ContainerOut onTouch");
-                return false;
-            }
-        });
-        mContainerIn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.w(TAG, "ContainerIn onTouch");
-                return false;
-//                return true;
-            }
-        });
-
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Log.i(TAG, "view onTouch ACTION_DOWN");
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        Log.i(TAG, "view onTouch ACTION_MOVE");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.i(TAG, "view onTouch ACTION_UP");
-                        break;
-                    case MotionEvent.ACTION_CANCEL:
-                        Log.i(TAG, "view onTouch ACTION_CANCEL");
-                        break;
-                }
+                KLog.i(TAG, "mCustomView, onTouch, getAction:" + event.getAction());
+                boolean performClick = v.performClick();
+                KLog.e(TAG, "performClick:" + performClick);
                 return true;
             }
         });
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, "onClick");
-//            }
-//        });
+        KLog.i(TAG, "isClickable:" + mCustomView.isClickable());
+
+        mContainerIn.post(new Runnable() {
+            @Override
+            public void run() {
+                int expand = 30;
+                Rect bounds = new Rect();
+                // 获取View2区域在mContainerIn中的相对位置，这里因为mContainerIn是View2的直接父View，所以使用getHitRect()
+                mCustomView.getHitRect(bounds);
+                // 计算扩展后的区域Bounds相对于mContainerIn的位置，left、top、right、bottom分别为view在各个方向上的扩展范围
+                bounds.left -= expand;
+                bounds.top -= expand;
+                bounds.right += expand;
+                bounds.bottom += expand;
+                // 创建TouchDelegate
+                TouchDelegate touchDelegate = new TouchDelegate(bounds, mCustomView);
+                // 为mContainerIn设置TouchDelegate
+                mContainerIn.setTouchDelegate(touchDelegate);
+
+                mContainerIn.setBounds(bounds);
+                mContainerIn.postInvalidate();
+            }
+        });
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"activity, dispatchTouchEvent_ACTION_DOWN");
-                break;
-            case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"activity, dispatchTouchEvent_ACTION_MOVE");
-                break;
-            case MotionEvent.ACTION_UP:
-                Log.d(TAG,"activity, dispatchTouchEvent_ACTION_UP");
-                break;
-        }
-        return super.dispatchTouchEvent(event);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"activity, onTouchEvent_ACTION_DOWN");
-                break;
-            case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"activity, onTouchEvent_ACTION_MOVE");
-                break;
-            case MotionEvent.ACTION_UP:
-                Log.d(TAG,"activity, onTouchEvent_ACTION_UP");
-                break;
-        }
-        return super.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        boolean dispatchTouchEvent = super.dispatchTouchEvent(event);
+//        KLog.d(TAG, "dispatchTouchEvent:" + dispatchTouchEvent + ", getAction:" + event.getAction());
+//        return dispatchTouchEvent;
+//    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        boolean onTouchEvent = super.onTouchEvent(event);
+//        KLog.d(TAG, "onTouchEvent:" + onTouchEvent + ", getAction:" + event.getAction());
+//        return onTouchEvent;
+//    }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override

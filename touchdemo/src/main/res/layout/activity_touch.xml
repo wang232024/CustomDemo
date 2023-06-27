@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,60 +11,38 @@
         android:layout_marginTop="30dp"
         android:id="@+id/container_out"
         android:background="#33ff0000"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_width="400dp"
-        android:layout_height="400dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="300dp">
 
         <com.example.demo.ContainerIn
             android:id="@+id/container_in"
             android:orientation="vertical"
             android:background="#3300ff00"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="300dp">
+            android:layout_width="250dp"
+            android:layout_height="250dp">
 
             <com.example.demo.CustomView
-                android:id="@+id/view"
+                android:id="@+id/customview"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:background="#330000ff"
-                android:layout_width="200dp"
-                android:layout_height="200dp" />
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
         </com.example.demo.ContainerIn>
 
     </com.example.demo.ContainerOut>
 
-    <LinearLayout
-        android:layout_margin="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <TextView
-            android:id="@+id/touch_tv1"
-            android:text="1234567890"
-            android:textSize="30sp"
-            android:background="#3399ccff"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/touch_tv2"
-            android:text="1234567890"
-            android:textSize="30sp"
-            android:background="#6699ccff"
-            android:includeFontPadding="false"
-            android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
-            <!--includeFontPadding用来设置文本框是否包含顶部和底部留白（左右两侧默认没有留白），将其设置为false，TextView就会取消2px的留白-->
-    </LinearLayout>
 
     <LinearLayout
-        android:layout_margin="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
@@ -83,4 +61,12 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-</LinearLayout>
+    <View
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#000003"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

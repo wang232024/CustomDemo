@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <com.example.custom.view.CustomView
-            android:id="@+id/view"
+            android:id="@+id/customview"
             android:background="#00ff00"
             android:layout_width="50dp"
             android:layout_height="50dp" />

@@ -19,7 +19,7 @@ public class CustomViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_customview);
 
-        mView = findViewById(R.id.view);
+        mView = findViewById(R.id.customview);
 
         Log.i(TAG, "onCreate");
 
