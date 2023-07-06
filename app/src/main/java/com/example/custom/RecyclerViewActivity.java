@@ -1,4 +1,4 @@
-package com.example.custom.activity;
+package com.example.custom;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -25,11 +25,26 @@ import com.custom.savedb.GreenDaoActivity;
 import com.example.animation.AnimationActivity;
 import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
-import com.example.custom.RetrofitRxjavaDownloadActivity;
+import com.example.custom.activity.BezierActivity;
+import com.example.custom.activity.CustomViewActivity;
+import com.example.custom.activity.DealWithActivity;
+import com.example.custom.activity.DownloadActivity;
+import com.example.custom.activity.EditTextActivity;
+import com.example.custom.activity.ExcelActivity;
+import com.example.custom.activity.FragmentActivity;
+import com.example.custom.activity.ImmersionActivity;
+import com.example.custom.activity.IntentActivity;
+import com.example.custom.activity.LockPatternActivity;
+import com.example.custom.activity.LoginActivity;
+import com.example.custom.activity.SettingsActivity;
+import com.example.custom.activity.StyleActivity;
+import com.example.custom.activity.WelcomActivity;
+import com.example.custom.activity.WidgetActivity;
+import com.example.custom.activity.WindowActivity;
 import com.example.custom.recyclerview.ItemBean;
 import com.example.custom.recyclerview.ItemSpaceDecoration;
+import com.example.roomdemo.MainRoomActivity;
 import com.example.util.ManifestUtil;
-import com.example.custom.R;
 import com.example.custom.recyclerview.CustomRecyclerViewAdapter;
 //import com.example.custom.recyclerview.ItemSpaceDecoration;
 import com.example.util.ShareUtil;
@@ -74,7 +89,8 @@ public class RecyclerViewActivity extends Activity {
             WelcomActivity.class,               AnimationActivity.class,         BezierActivity.class,
             DealWithActivity.class,             IntentActivity.class,           FragmentActivity.class,
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
-            RecyclerViewDemoActivity.class,     GifActivity.class,              GreenDaoActivity.class,
+            RecyclerViewDemoActivity.class,     GifActivity.class,
+            GreenDaoActivity.class,             MainRoomActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
             UtilActivity.class,                 TouchActivity.class,            PropertyAnimatorActivity.class,
             RetrofitRxjavaDownloadActivity.class,

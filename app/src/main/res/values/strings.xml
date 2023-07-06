@@ -43,6 +43,7 @@
         <item>RecyclerViewDemo</item>
         <item>Gif</item>
         <item>GreenDao</item>
+        <item>Room</item>
         <item>Glide</item>
         <item>EventBus</item>
         <item>SelectDeleteRecyclerView</item>

@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomDemo">
         <activity
-            android:name="com.example.custom.activity.RecyclerViewActivity"
+            android:name="com.example.custom.RecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

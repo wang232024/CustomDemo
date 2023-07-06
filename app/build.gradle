@@ -99,4 +99,5 @@ dependencies {
     implementation project(path: ':downloaddemo')
     implementation project(path: ':animation')
     implementation project(path: ':util')
+    implementation project(path: ':roomdemo')
 }
