@@ -1,20 +1,16 @@
 package com.example.util;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.WindowManager;
 
 import java.util.Locale;
 
-/**
- * Author:wenjunjie
- * Date:2022/10/18
- * Time:上午10:10
- * Description:
- **/
 public class PlatformUtil {
-
 
     //获取设备厂商
     public static String getDeviceManufacturer(){
@@ -25,7 +21,6 @@ public class PlatformUtil {
     public static String getDeviceBrand(){
         return Build.BRAND;
     }
-
 
     //获取设备型号
     public static String getDeviceModel(){
@@ -76,13 +71,37 @@ public class PlatformUtil {
         return dm.densityDpi;
     }
 
-
     //获取设备序列号
     public static String getDeviceId(){
 //        return Build.getSerial();
         return "8S21E600";
     }
 
+    /**
+     * 判断当前语言是否是RTL从右到左模式
+     * @return      true:从右到左
+     */
+    public boolean isRTL() {
+        return TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) == View.LAYOUT_DIRECTION_RTL;
+    }
 
+    /**
+     * 判断当前是否为深色模式
+     * @param context
+     * @return      true:深色模式
+     */
+    public boolean isModeNight(Context context) {
+        int mode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    /**
+     * 判断当前是否为横屏
+     * @param context
+     * @return      true:横屏
+     */
+    public boolean isLand(Context context) {
+        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+    }
 
 }
