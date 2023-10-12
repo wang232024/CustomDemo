@@ -141,10 +141,12 @@ public class RecyclerViewActivity extends Activity {
             mItemWidth = 0.30625f * mHeight;         // Item宽高
             mItemHeight = 0.11718751f * mWidth;
         }
+        mSpanCouont = (int) (mRecyclerviewWidth / mItemWidth);
+
         Log.w(TAG, "ratewidth:" + (getPercent(guideline_recyclerview_right) - getPercent(guideline_recyclerview_left)) +
                 ", rateheight:" + (getPercent(guideline_recyclerview_bottom) - getPercent(guideline_recyclerview_top)));
         Log.w(TAG, "RecyclerView, [" + mRecyclerviewWidth + ", " + mRecyclerviewHeight + "]");
-        Log.w(TAG, "Item, [" + mItemWidth + ", " + mItemHeight + "]");
+        Log.w(TAG, "Item, [" + mItemWidth + ", " + mItemHeight + "], mSpanCouont:" + mSpanCouont);
 
         if (null == mBroadcastReceiver) {
             mBroadcastReceiver = new BroadcastReceiver() {
