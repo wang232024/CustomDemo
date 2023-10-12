@@ -3,65 +3,95 @@ package com.custom.savedb;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.custom.savedb.greendaobean.DaoMaster;
 import com.custom.savedb.greendaobean.DaoSession;
 import com.custom.savedb.greendaobean.UserImDao;
+import com.example.util.KLog;
 
 import org.greenrobot.greendao.database.Database;
 
 import java.util.List;
 
 public class GreenDaoActivity extends AppCompatActivity {
-    private static final String TAG = "wtx_MainActivity";
+    private static final String TAG = "wtx_GreenDaoActivity";
 
     private DaoMaster daoMaster;
     private static DaoSession daoSession;
     private DaoMaster.DevOpenHelper devOpenHelper = null;
+    private UserImDao mUserDao;
+    private TextView tv_database_content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_greendao);
+        setContentView(R.layout.layout_database);
 
-        Log.i(TAG, "getPackageName:" + getPackageName());
+        Button btn_database_insert = findViewById(R.id.btn_database_insert);
+        Button btn_database_delete = findViewById(R.id.btn_database_delete);
+        Button btn_database_update = findViewById(R.id.btn_database_update);
+        Button btn_database_query = findViewById(R.id.btn_database_query);
+        tv_database_content = findViewById(R.id.tv_database_content);
 
-        devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(),"数据库名称.db",null);
+        btn_database_insert.setOnClickListener(mOnClickListener);
+        btn_database_delete.setOnClickListener(mOnClickListener);
+        btn_database_update.setOnClickListener(mOnClickListener);
+        btn_database_query.setOnClickListener(mOnClickListener);
+
+        KLog.i(TAG, "getPackageName:" + getPackageName());
+
+        devOpenHelper = new DaoMaster.DevOpenHelper(
+                getApplicationContext(),
+                UserIm.GreenDao_db,
+                null
+        );
         //实例化DaoMaster对象
         daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
         //实例化DaoSession对象
         daoSession = daoMaster.newSession();
 
-        UserImDao userDao = daoSession.getUserImDao();
-        Log.w(TAG, "------------------0");
-        query(userDao);
-        add(userDao);
-        query(userDao);
-        Log.w(TAG, "------------------1");
-        modify(userDao);
-        query(userDao);
-        Log.w(TAG, "------------------2");
-        delete(userDao);
-        query(userDao);
-        Log.w(TAG, "------------------3");
-        deleteAll();
-        query(userDao);
-        Log.w(TAG, "------------------4");
+        mUserDao = daoSession.getUserImDao();
     }
 
-    // 增
-    private void add(UserImDao userDao) {
-        for (int i = 0; i < 10; i++) {
-            userDao.insert(new UserIm(null, "id_" + i, "name_" + i, "http://www.xxx.com"));
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int viewId = v.getId();
+            long time = System.currentTimeMillis();
+            if (R.id.btn_database_insert == viewId) {
+                UserIm userIm = new UserIm(null, "id_" + time, "GreenDao", "http://www.green.dao/" + time);
+                mUserDao.insert(userIm);
+            } else if (R.id.btn_database_delete == viewId) {
+                mUserDao.deleteByKey(7L);   // 根据主键进行删除
+            } else if (R.id.btn_database_update == viewId) {
+                List<UserIm> userIms;
+                userIms = mUserDao.queryBuilder().where(UserImDao.Properties.Name.isNotNull()).list();
+                if (userIms.size() > 0){
+                    userIms.get(0).setUserId("modify_userId");
+                    mUserDao.update(userIms.get(0));
+                }
+            } else if (R.id.btn_database_query == viewId) {
+                List<UserIm> userIms; //所有的user
+                userIms = mUserDao.queryBuilder().where(UserImDao.Properties.Name.isNotNull()).list();
+                for (UserIm userIm : userIms) {
+                    KLog.i(TAG, "userIm:" + userIm.toString());
+                }
+            }
+            List<UserIm> userIms; //所有的user
+            userIms = mUserDao.queryBuilder().where(UserImDao.Properties.Name.isNotNull()).list();
+            StringBuilder stringBuilder = new StringBuilder();
+            for (UserIm userIm : userIms) {
+                KLog.i(TAG, "userIm:" + userIm.toString());
+                stringBuilder.append(userIm.toString());
+                stringBuilder.append("\n");
+            }
+            tv_database_content.setText("");
+            tv_database_content.setText(stringBuilder.toString());
         }
-    }
-
-    // 删
-    private void delete(UserImDao userDao) {
-        //删除某一条数据
-        userDao.deleteByKey(7L);
-    }
+    };
 
     private void deleteAll() {
         //清空所有数据
@@ -69,27 +99,6 @@ public class GreenDaoActivity extends AppCompatActivity {
         Database database = daoSession.getUserImDao().getDatabase();
         DaoMaster.dropAllTables(database, true);
         DaoMaster.createAllTables(database, true);
-    }
-
-    // 改
-    private void modify(UserImDao userDao) {
-        List<UserIm> userIms; //所有的user
-        userIms = userDao.queryBuilder().where(UserImDao.Properties.Url.eq("http://www.xxx.com")).list();
-        if (userIms.size() > 0){
-            userIms.get(0).setName("modify_name");
-            userIms.get(0).setUserId("modify_userId");
-            userDao.update(userIms.get(0));
-        }
-    }
-
-    // 查
-    private void query(UserImDao userDao) {
-        List<UserIm> userIms; //所有的user
-        userIms = userDao.queryBuilder().where(UserImDao.Properties.Url.eq("http://www.xxx.com")).list();
-        for (UserIm userIm : userIms) {
-            Log.i(TAG, "getId:" + userIm.getId() + ", getUserId:" + userIm.getUserId() +
-                    ", getName:" + userIm.getName() + ", getUrl:" + userIm.getUrl());
-        }
     }
 
     //通过此方法,进行增删改查

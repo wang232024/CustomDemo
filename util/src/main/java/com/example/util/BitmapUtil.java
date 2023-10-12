@@ -1,8 +1,15 @@
 package com.example.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.util.Base64;
+
+import androidx.appcompat.content.res.AppCompatResources;
 
 import java.io.ByteArrayOutputStream;
 
@@ -46,6 +53,48 @@ public class BitmapUtil {
         return bitmap;
     }
 
+    /**
+     *
+     * @param context
+     * @param drawableId    R.drawable.xxx
+     */
+    public static Drawable initDrawable(Context context, int drawableId) {
+        return AppCompatResources.getDrawable(context, drawableId);
+    }
 
+    /**
+     * Drawable转Bitmap
+     * @param drawable
+     * @return
+     */
+    public static Bitmap drawableToBitmap(Drawable drawable){
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+        Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE
+                ? Bitmap.Config.ARGB_8888
+                : Bitmap.Config.RGB_565;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, config);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0,0, width, height);
+        drawable.draw(canvas);
+        return bitmap;
+    }
+
+    /**
+     * 缩放图片
+     * @param bitmap
+     * @param w
+     * @param h
+     * @return
+     */
+    public static Bitmap zoomBitmap(Bitmap bitmap, int w, int h){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        float scaleWidht = ((float) w / width);
+        float scaleHeight = ((float)h / height);
+        matrix.postScale(scaleWidht, scaleHeight);
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
 
 }

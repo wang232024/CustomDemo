@@ -109,6 +109,8 @@ public class WindowActivity extends Activity {
         // 设置PopupWindow是否能响应外部点击事件,
         mPopupWindow.setOutsideTouchable(false);
 
+//        mPopupWindow.setClippingEnabled(false);
+
         btn_sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

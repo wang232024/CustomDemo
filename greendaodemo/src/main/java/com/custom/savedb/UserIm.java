@@ -4,8 +4,12 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
-@Entity
+@Entity(
+    nameInDb = "greendao_table"     // GreenDao表名
+)
 public class UserIm {
+    public static final String GreenDao_db = "greendao.db";     // GreenDao数据库名
+
     @Id
     private Long id;
     private String userId;
@@ -44,5 +48,15 @@ public class UserIm {
     }
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "UserIm{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

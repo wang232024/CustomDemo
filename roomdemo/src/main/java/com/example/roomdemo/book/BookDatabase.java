@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Book.class }, version = 1)
+@Database(entities = {Book.class}, version = 1)
 public abstract class BookDatabase extends RoomDatabase {
     //我们对数据的操作为了避免被滥用实例化，使用单例模式，singleTon，并且加锁
     private static BookDatabase INSTANCE;
+
     //创建一个方法，这个方法返回一个BookDatabase
     public static BookDatabase getDatabase(Context context){
         if (INSTANCE == null){

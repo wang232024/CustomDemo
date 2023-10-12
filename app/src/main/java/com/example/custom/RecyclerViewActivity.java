@@ -27,6 +27,7 @@ import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
 import com.example.custom.activity.BezierActivity;
 import com.example.custom.activity.CustomViewActivity;
+import com.example.custom.activity.DataBaseActivity;
 import com.example.custom.activity.DealWithActivity;
 import com.example.custom.activity.DownloadActivity;
 import com.example.custom.activity.EditTextActivity;
@@ -90,7 +91,7 @@ public class RecyclerViewActivity extends Activity {
             DealWithActivity.class,             IntentActivity.class,           FragmentActivity.class,
             SettingsActivity.class,             TabLayoutActivity.class,        BaseDesignLayoutActivity.class,
             RecyclerViewDemoActivity.class,     GifActivity.class,
-            GreenDaoActivity.class,             MainRoomActivity.class,
+            DataBaseActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
             UtilActivity.class,                 TouchActivity.class,            PropertyAnimatorActivity.class,
             RetrofitRxjavaDownloadActivity.class,

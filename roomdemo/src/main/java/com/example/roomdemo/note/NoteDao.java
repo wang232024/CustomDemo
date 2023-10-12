@@ -6,14 +6,13 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.roomdemo.Constants;
-
 import java.util.List;
 
 @Dao
 public interface NoteDao {
+    String TABLE_NAME = "room_table_note";
 
-    @Query("SELECT * FROM " + Constants.TABLE_NAME_NOTE)
+    @Query("SELECT * FROM " + TABLE_NAME)
     List<Note> getNotes();
 
     /*

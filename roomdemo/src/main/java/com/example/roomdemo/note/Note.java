@@ -4,12 +4,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.roomdemo.Constants;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity(tableName = Constants.TABLE_NAME_NOTE)
+@Entity(tableName = NoteDao.TABLE_NAME)
 public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)

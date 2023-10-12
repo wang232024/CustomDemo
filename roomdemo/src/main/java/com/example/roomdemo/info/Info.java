@@ -9,7 +9,8 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = InfoDatabase.TABLE_NAME)
+//@Entity(tableName = InfoDatabase.TABLE_NAME)
+@Entity(tableName = "info")
 public class Info implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)    //自增长的行号id

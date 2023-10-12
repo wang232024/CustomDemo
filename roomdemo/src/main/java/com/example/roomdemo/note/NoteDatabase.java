@@ -7,8 +7,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.roomdemo.Constants;
-
 @Database(entities = { Note.class }, version = 1)
 @TypeConverters({DateRoomConverter.class})
 public abstract class NoteDatabase extends RoomDatabase {
@@ -26,7 +24,7 @@ public abstract class NoteDatabase extends RoomDatabase {
     private static NoteDatabase buildDatabaseInstance(Context context) {
         return Room.databaseBuilder(context,
                 NoteDatabase.class,
-                Constants.DB_NAME).allowMainThreadQueries().build();
+                "room_note.db").allowMainThreadQueries().build();
     }
 
     public  void cleanUp(){

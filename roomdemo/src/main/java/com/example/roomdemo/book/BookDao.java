@@ -3,7 +3,12 @@ package com.example.roomdemo.book;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.roomdemo.info.InfoDatabase;
+
+import java.util.List;
 
 // Dao相当一个用于操作数据库的接口，一般命名为class+Dao
 @Dao
@@ -18,8 +23,8 @@ public interface BookDao {
     @Delete
     void deleteBool(Book book);
 
-//    @Query("select bookName from Book")
-//    List<Book> queryAllBooksByName();
+    @Query("SELECT * FROM " + " Book " + " WHERE bookName LIKE :bookName")
+    List<Book> queryAllBooksByName(String bookName);
 //
 //    //还可以返回LiveData类型
 //    @Query("select * from Book")
