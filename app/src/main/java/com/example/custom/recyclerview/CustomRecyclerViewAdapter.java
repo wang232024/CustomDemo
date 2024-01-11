@@ -18,13 +18,13 @@ import java.util.List;
 
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecyclerViewAdapter.CustomHolder> {
     private static final String TAG = "wtx_CustomRecyclerViewAdapter";
-    private Context mContext;
-    private int mLayout;
-    private List<ItemBean> mList;
-    private OnClickListener mOnClickListener;
-    private float mItemWidth;
-    private float mItemHeight;
+    private final Context mContext;
+    private final int mLayout;
+    private final List<ItemBean> mList;
+    private final float mItemWidth;
+    private final float mItemHeight;
     private int mStatus = 0;     // 0:普通模式   1:删除模式
+    private OnClickListener mOnClickListener;
 
     public interface OnClickListener {
         void onClick(int status, int position);
@@ -42,12 +42,10 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
     @Override
     public CustomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(mLayout, parent, false);
-        // 根据比例调整item宽高
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.width = (int) mItemWidth;
         layoutParams.height = (int) mItemHeight;
         view.setLayoutParams(layoutParams);
-
         return new CustomHolder(view);
     }
 

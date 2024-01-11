@@ -45,6 +45,7 @@ import com.example.custom.activity.WindowActivity;
 import com.example.custom.recyclerview.ItemBean;
 import com.example.custom.recyclerview.ItemSpaceDecoration;
 import com.example.roomdemo.MainRoomActivity;
+import com.example.util.KLog;
 import com.example.util.ManifestUtil;
 import com.example.custom.recyclerview.CustomRecyclerViewAdapter;
 //import com.example.custom.recyclerview.ItemSpaceDecoration;
@@ -73,8 +74,10 @@ public class RecyclerViewActivity extends Activity {
     private float mRecyclerviewHeight;
     private float mItemWidth;
     private float mItemHeight;
-    private int mSpanCouont = 3;    // 比例适配，修改此值须重新计算item参考线的比例值。一旦修改这里，须同时修改RecyclerView布局文件中的item参考线percent值。
+    // 横5竖3
+    private int mSpanCouont = 3;
     private String[] mActivityNames;
+    private float mRecyclerViewItemInterval;
     private RecyclerView mRecyclerView;
     private Guideline guideline_recyclerview_left;
     private Guideline guideline_recyclerview_right;
@@ -106,12 +109,7 @@ public class RecyclerViewActivity extends Activity {
         initView();
         initData();
         fillData();
-    }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        initData();
+        initBroadcast();
     }
 
     private BroadcastReceiver mBroadcastReceiver = null;
@@ -122,58 +120,32 @@ public class RecyclerViewActivity extends Activity {
     }
 
     private void initData() {
-        // 目标机器 800 * 1280
+        Configuration newConfig = getResources().getConfiguration();
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mSpanCouont = 3;
+        } else {
+            mSpanCouont = 5;
+        }
+
+        // 屏幕宽高
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         mWidth = metrics.widthPixels;
         mHeight = metrics.heightPixels;
         mDensity = metrics.density;
-        Log.i("wtx", "[" + mWidth + " * " + mHeight + "], density:" + mDensity);
-        // land:[1280.0 * 740.0], density:1.25
-        // tc622 mtk O611   [1200.0 * 1928.0], density:1.5
 
+        // 列表宽高
         mRecyclerviewWidth = (getPercent(guideline_recyclerview_right) - getPercent(guideline_recyclerview_left)) * mWidth;
         mRecyclerviewHeight = (getPercent(guideline_recyclerview_bottom) - getPercent(guideline_recyclerview_top)) * mHeight;
+        // 条目宽高
+        mItemWidth = (mRecyclerviewWidth - mRecyclerViewItemInterval * (mSpanCouont - 1)) / mSpanCouont;
+        mItemHeight = mItemWidth / 5 * 3;
+        float itemWidthRaw = (mRecyclerviewWidth - mItemWidth * mSpanCouont) / mSpanCouont;
 
-        if (mWidth < mHeight) {
-            mItemWidth = 0.30625f * mWidth;         // Item宽高
-            mItemHeight = 0.11718751f * mHeight;
-        } else {
-            mItemWidth = 0.30625f * mHeight;         // Item宽高
-            mItemHeight = 0.11718751f * mWidth;
-        }
-        mSpanCouont = (int) (mRecyclerviewWidth / mItemWidth);
-
-        Log.w(TAG, "ratewidth:" + (getPercent(guideline_recyclerview_right) - getPercent(guideline_recyclerview_left)) +
-                ", rateheight:" + (getPercent(guideline_recyclerview_bottom) - getPercent(guideline_recyclerview_top)));
-        Log.w(TAG, "RecyclerView, [" + mRecyclerviewWidth + ", " + mRecyclerviewHeight + "]");
-        Log.w(TAG, "Item, [" + mItemWidth + ", " + mItemHeight + "], mSpanCouont:" + mSpanCouont);
-
-        if (null == mBroadcastReceiver) {
-            mBroadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String action = intent.getAction();
-                    Log.w(TAG, "onReceive, action:" + action);
-                    switch (action) {
-                        case Intent.ACTION_SHUTDOWN:
-
-                            break;
-                        case Intent.ACTION_REBOOT:
-
-                            break;
-                        case Intent.ACTION_SCREEN_OFF:
-
-                            break;
-                    }
-                }
-            };
-            IntentFilter intentFilter = new IntentFilter();
-            intentFilter.addAction(Intent.ACTION_SHUTDOWN);      // 关机
-            intentFilter.addAction(Intent.ACTION_REBOOT);        // 重启
-            intentFilter.addAction(Intent.ACTION_SCREEN_OFF);    // 熄屏
-            intentFilter.addAction(Intent.ACTION_SCREEN_ON);     // 亮屏
-            registerReceiver(mBroadcastReceiver, intentFilter);
-        }
+        KLog.i("wtx", "mRecyclerviewWidth:" + mRecyclerviewWidth + ", mRecyclerviewHeight:" + mRecyclerviewHeight);
+        KLog.i("wtx", "[" + mWidth + " * " + mHeight + "], density:" + mDensity);
+        KLog.i("wtx", "mSpanCouont:" + mSpanCouont);
+        KLog.i("wtx", "Item:[" + mItemWidth + ", " + mItemWidth + "]");
+        KLog.i("wtx", "mRecyclerViewItemInterval:" + mRecyclerViewItemInterval + ", itemWidthRaw:" + itemWidthRaw);
 
         // 适配器
         mCustomRecyclerViewAdapter = new CustomRecyclerViewAdapter(mContext, R.layout.layout_recyclerview_item, mList, mItemWidth, mItemHeight);
@@ -184,6 +156,11 @@ public class RecyclerViewActivity extends Activity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, mSpanCouont);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 //        gridLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+
+        // 分隔线
+        ItemSpaceDecoration decoration = new ItemSpaceDecoration(mRecyclerviewWidth, mItemWidth, mSpanCouont, 0);
+//        ItemSpaceDecoration decoration = new ItemSpaceDecoration(mRecyclerviewWidth, mRecyclerViewItemInterval, mSpanCouont, 1);
+        mRecyclerView.addItemDecoration(decoration);
 
 //        //给RecyclerView设置ItemTouchHelper，可拖拽
 //        ItemTouchHelperCallback itemTouchHelperCallback = new ItemTouchHelperCallback();
@@ -206,10 +183,6 @@ public class RecyclerViewActivity extends Activity {
 //        });
 //        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemTouchHelperCallback);
 //        itemTouchHelper.attachToRecyclerView(recyclerView);
-
-        // 分隔线
-        ItemSpaceDecoration decoration = new ItemSpaceDecoration(mSpanCouont, mRecyclerviewWidth, mRecyclerviewHeight);
-        mRecyclerView.addItemDecoration(decoration);
     }
 
     private void initView() {
@@ -223,6 +196,7 @@ public class RecyclerViewActivity extends Activity {
         guideline_recyclerview_bottom = findViewById(R.id.id_guideline_recyclerview_bottom);
 
         mActivityNames = getResources().getStringArray(mActivityNameId);
+        mRecyclerViewItemInterval = getResources().getDimension(R.dimen.recyclerview_item_interval);
     }
 
     /**
@@ -292,4 +266,32 @@ public class RecyclerViewActivity extends Activity {
         }
     }
 
+    private void initBroadcast() {
+        if (null == mBroadcastReceiver) {
+            mBroadcastReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String action = intent.getAction();
+                    Log.w(TAG, "onReceive, action:" + action);
+                    switch (action) {
+                        case Intent.ACTION_SHUTDOWN:
+
+                            break;
+                        case Intent.ACTION_REBOOT:
+
+                            break;
+                        case Intent.ACTION_SCREEN_OFF:
+
+                            break;
+                    }
+                }
+            };
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(Intent.ACTION_SHUTDOWN);      // 关机
+            intentFilter.addAction(Intent.ACTION_REBOOT);        // 重启
+            intentFilter.addAction(Intent.ACTION_SCREEN_OFF);    // 熄屏
+            intentFilter.addAction(Intent.ACTION_SCREEN_ON);     // 亮屏
+            registerReceiver(mBroadcastReceiver, intentFilter);
+        }
+    }
 }

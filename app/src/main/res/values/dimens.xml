@@ -27,4 +27,6 @@
     <dimen name="capsule_spacing">12dp</dimen>
     <dimen name="capsule_strke_width">1.33dp</dimen>
 
+    <dimen name="recyclerview_item_interval">16dp</dimen>
+
 </resources>

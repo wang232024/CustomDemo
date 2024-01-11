@@ -2,12 +2,9 @@ package com.example.custom.recyclerview;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -17,28 +14,35 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class ItemSpaceDecoration extends RecyclerView.ItemDecoration {
     private static final String TAG = "wtx_ItemSpaceDecoration";
-    private int mSpanCouont;
-    private float mSpanWidthValue = 0;        // 调整间隔，首尾贴边，等分间隔，数量为(mSpanCouont - 1)个
-    private float mSpanWidthValueRaw = 0;     // 原间隔，item左对齐，并且间距数量为mSpanCouont个
-    private float mRecyclerviewWidth = 0;
-    private float mRecyclerviewHeight = 0;
-    private float mItemWidth = 0;
-    private float mItemHeight = 0;
+    private final int mSpanCouont;
+    private float mSpanWidthValueDes = 0;        // 调整间隔，首尾贴边，等分间隔，数量为(mSpanCouont - 1)个
+    private float mSpanWidthValueSrc = 0;     // 原间隔，item左对齐，并且间距数量为mSpanCouont个
 
-    public ItemSpaceDecoration(int spanCouont, float width, float height) {
-        super();
+    /**
+     * type 0:根据recyclerviewWidth, mItemWidth, spanCouont计算间距
+     *      1:根据recyclerviewWidth, 最终间距, spanCouont计算间距/条目宽度
+     *
+     * @param recyclerviewWidth recyclerviewWidth
+     * @param value value
+     * @param spanCouont spanCouont
+     * @param type type
+     */
+    public ItemSpaceDecoration(float recyclerviewWidth, float value, int spanCouont, int type) {
         mSpanCouont = spanCouont;
-        mRecyclerviewWidth = width;
-        mRecyclerviewHeight = height;
-    }
-
-    public ItemSpaceDecoration(int spanCouont, float width, float height, float itemWidth, float itemHeight) {
-        super();
-        mSpanCouont = spanCouont;
-        mRecyclerviewWidth = width;
-        mRecyclerviewHeight = height;
-        mItemWidth = itemWidth;
-        mItemHeight = itemHeight;
+        float mItemWidth;
+        switch (type) {
+            case 0:
+                mItemWidth = value;
+                mSpanWidthValueDes = (recyclerviewWidth - mItemWidth * spanCouont) / (spanCouont - 1);
+                mSpanWidthValueSrc = (recyclerviewWidth - mItemWidth * spanCouont) / spanCouont;
+                break;
+            case 1:
+                mSpanWidthValueDes = value;
+                mItemWidth = (recyclerviewWidth - mSpanWidthValueDes * (spanCouont - 1)) / spanCouont;
+                mSpanWidthValueSrc = (recyclerviewWidth - mItemWidth * spanCouont) / spanCouont;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -56,58 +60,31 @@ public class ItemSpaceDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        if (0 == mItemWidth) {          // 未给出比例宽高时，使用api传入的计算值(int型，有精度下降)
-            // 此处只能获取到item的宽高，无法获取RecyclerView的宽高(需初始化时传入)
-            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) view.getLayoutParams();
-            Log.d(TAG, "getItemOffsets, [" + layoutParams.width + ", " + layoutParams.height + "]");
-            mItemWidth = layoutParams.width;
-            mItemHeight = layoutParams.height;
-        }
-
-        RecyclerView.LayoutManager manager = parent.getLayoutManager();
+        /**
+         * outRect设置的值表示在RecyclerView为每个item分配的Rect的偏移值
+         * 分配偏移值后，会作为padding计算入item的宽高中
+         * 例如：只设置每行地一个item的bottom值，会导致item的高度增加，其他未设置的item的高度会比第一个大
+         */
         int childPosition = parent.getChildAdapterPosition(view);
-        int itemCount = parent.getAdapter().getItemCount();
-//        Log.d(TAG, "getItemOffsets, childPosition:" + childPosition + ", itemCount:" + itemCount);
-        if (null != manager) {
-            if (manager instanceof GridLayoutManager) {
-                setGridOffset(childPosition, itemCount, outRect);
-            } else if (manager instanceof LinearLayoutManager) {
-                // manager为LinearLayoutManager时
-                ;
-            }
-        }
-    }
-
-    /**
-     * outRect设置的值表示在RecyclerView为每个item分配的Rect的偏移值
-     * 分配偏移值后，会作为padding计算入item的宽高中
-     * 例如：只设置每行地一个item的bottom值，会导致item的高度增加，其他未设置的item的高度会比第一个大
-     * @param position
-     * @param count
-     * @param outRect
-     */
-    private void setGridOffset(int position, int count, Rect outRect) {
-        if (1 < mSpanCouont) {
-            if (0 == mSpanWidthValue) {
-                mSpanWidthValue = (mRecyclerviewWidth - mItemWidth * mSpanCouont) / (mSpanCouont - 1);
-                mSpanWidthValueRaw = (mRecyclerviewWidth - mItemWidth * mSpanCouont) / mSpanCouont;
-                Log.i(TAG, "setGridOffset, mSpanWidthValue:" + mSpanWidthValue + ", mSpanWidthValueRaw:" + mSpanWidthValueRaw);
-            }
-
-            if (0 == position % mSpanCouont) {
-                // 每行第一个item不右移，下移1个调整间隔
-                outRect.set(0, 0, 0, (int) mSpanWidthValue);
-            } else if (mSpanCouont - 1 == position % mSpanCouont) {
-                // 每行最后一个item右移1个原间隔，下移1个调整间隔
-                outRect.set((int) mSpanWidthValueRaw, 0, 0, (int) mSpanWidthValue);
-            } else {
-                // 每行其他item右移(调整间隔 - 原间隔)，下移1个调整间隔
-                outRect.set((int) (mSpanWidthValue - mSpanWidthValueRaw), 0, 0, (int) mSpanWidthValue);
-            }
+        int indexLine = childPosition % mSpanCouont;
+        if (indexLine == 0) {
+            // 第一列左边距为0
+            outRect.left = 0;
+        } else if (indexLine == mSpanCouont - 1) {
+            // 最后一列右移一个原边距
+            outRect.left = (int) mSpanWidthValueSrc;
         } else {
-            // 网格布局每行只有一个item，暂不考虑
-            return;
+            // 其他列右移 (边距差) * 索引
+            outRect.left = (int) ((mSpanWidthValueDes - mSpanWidthValueSrc) * indexLine);
         }
-    }
+        outRect.right = 0;
 
+        int intervalHalf = (int) (mSpanWidthValueDes / 2);
+        if (childPosition / mSpanCouont == 0) {
+            outRect.top = 0;
+        } else {
+            outRect.top = intervalHalf;
+        }
+        outRect.bottom = intervalHalf;
+    }
 }
