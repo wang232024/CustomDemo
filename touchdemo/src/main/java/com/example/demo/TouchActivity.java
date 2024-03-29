@@ -10,9 +10,8 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 /**
  * 1. 控件clickable属性决定其是否默认消耗点击事件。能点击时将消耗掉点击事件，onTouchEvent返回true;否则不消耗点击事件，onTouchEvent返回false，事件继续向上层传递，后续事件由上层接管。

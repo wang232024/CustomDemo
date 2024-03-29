@@ -1,6 +1,6 @@
 package com.example.custom.download;
 
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 import java.io.IOException;
 
@@ -10,7 +10,6 @@ import okio.Buffer;
 import okio.BufferedSource;
 import okio.ForwardingSource;
 import okio.Okio;
-import okio.Sink;
 import okio.Source;
 
 public class BaseResponseBody extends ResponseBody {

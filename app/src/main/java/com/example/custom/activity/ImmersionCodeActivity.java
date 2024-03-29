@@ -15,7 +15,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.custom.R;
-import com.example.util.PictureUtil;
+import com.example.common.util.PictureUtil;
 
 public class ImmersionCodeActivity extends AppCompatActivity {
 

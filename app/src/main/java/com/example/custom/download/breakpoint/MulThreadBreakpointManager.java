@@ -3,7 +3,7 @@ package com.example.custom.download.breakpoint;
 import android.content.Context;
 import android.util.Log;
 import com.example.custom.download.multhread.ThreadDownload;
-import com.example.util.FileUtil;
+import com.example.common.util.FileUtil;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;

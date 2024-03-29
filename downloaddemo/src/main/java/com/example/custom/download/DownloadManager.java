@@ -2,8 +2,8 @@ package com.example.custom.download;
 
 import android.annotation.SuppressLint;
 
-import com.example.util.KLog;
-import com.example.util.UrlUtil;
+import com.example.common.KLog;
+import com.example.common.util.UrlUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.FileNotFoundException;

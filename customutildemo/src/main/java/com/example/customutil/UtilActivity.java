@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.util.AssetsUtil;
-import com.example.util.ManifestUtil;
-import com.example.util.ShareUtil;
-import com.example.util.UriUtil;
-import com.example.util.Logger;
-import com.example.util.ZipUtil;
+import com.example.common.util.AssetsUtil;
+import com.example.common.util.ManifestUtil;
+import com.example.common.util.ShareUtil;
+import com.example.common.util.UriUtil;
+import com.example.common.Logger;
+import com.example.common.util.ZipUtil;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.customutil.download.breakpoint.MulThreadBreakpointManager;
 import com.example.customutil.download.multhread.MulThreadDownload;
-import com.example.util.FileUtil;
+import com.example.common.util.FileUtil;
 
 import com.example.customutil.R;
 

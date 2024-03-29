@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.custom.savedb.greendaobean.DaoMaster;
 import com.custom.savedb.greendaobean.DaoSession;
 import com.custom.savedb.greendaobean.UserImDao;
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 import org.greenrobot.greendao.database.Database;
 

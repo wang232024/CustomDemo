@@ -1,15 +1,10 @@
 package com.example.custom.download;
 
-import com.example.util.KLog;
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okio.BufferedSource;
 
 public class BaseInterceptor implements Interceptor {
     @Override

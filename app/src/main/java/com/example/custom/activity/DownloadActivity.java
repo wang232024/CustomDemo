@@ -19,8 +19,7 @@ import com.example.custom.R;
 import com.example.custom.download.DownloadContant;
 import com.example.custom.download.breakpoint.MulThreadBreakpointManager;
 import com.example.custom.download.multhread.MulThreadDownloadManager;
-import com.example.util.FileUtil;
-import com.example.util.Logger;
+import com.example.common.Logger;
 
 import java.io.File;
 import java.util.Arrays;

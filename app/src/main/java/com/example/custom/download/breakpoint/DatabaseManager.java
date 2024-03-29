@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.example.util.Logger;
+import com.example.common.Logger;
 
 /**
  * 用于操作数据库的类

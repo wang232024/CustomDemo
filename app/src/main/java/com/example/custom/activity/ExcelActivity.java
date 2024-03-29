@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import java.io.File;
 import java.io.FileInputStream;
-import com.example.util.AssetsUtil;
-import com.example.util.ExcelUtils;
+import com.example.common.util.AssetsUtil;
+import com.example.common.util.ExcelUtils;
 import com.example.custom.R;
 
 public class ExcelActivity extends Activity {

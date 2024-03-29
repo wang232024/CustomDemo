@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 /**
  *  如果传入的点击事件ACTION_DOWN未被处理，那么后续的点击事件(ACTION_MOVE, ACTION_UP)都不会再往下传递。

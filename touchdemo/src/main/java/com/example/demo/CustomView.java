@@ -2,14 +2,12 @@ package com.example.demo;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 public class CustomView extends View {
     private static final String TAG = "CustomView";

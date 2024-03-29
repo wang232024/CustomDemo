@@ -1,9 +1,5 @@
 package com.example.custom.download;
 
-import android.util.Log;
-
-import com.example.util.KLog;
-
 import java.io.IOException;
 
 import okhttp3.MediaType;

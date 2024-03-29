@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.custom.download.DownloadInfo;
 import com.example.custom.download.DownloadManager;
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 public class RetrofitRxjavaDownloadActivity extends AppCompatActivity {
     private static final String TAG = RetrofitRxjavaDownloadActivity.class.getName();

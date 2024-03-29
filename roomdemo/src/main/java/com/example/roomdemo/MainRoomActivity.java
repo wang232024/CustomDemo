@@ -10,10 +10,9 @@ import android.widget.Button;
 import com.example.roomdemo.book.Book;
 import com.example.roomdemo.book.BookDatabase;
 import com.example.roomdemo.info.InfoDatabase;
-import com.example.roomdemo.note.Note;
 import com.example.roomdemo.note.NoteDatabase;
 import com.example.roomdemo.song.MusicDatabase;
-import com.example.util.KLog;
+import com.example.common.KLog;
 
 import java.util.List;
 

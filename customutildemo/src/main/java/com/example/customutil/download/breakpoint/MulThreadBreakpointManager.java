@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.example.util.FileUtil;
+import com.example.common.util.FileUtil;
 
 /**
  * 多线程断点下载

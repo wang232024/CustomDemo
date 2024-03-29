@@ -98,6 +98,7 @@ dependencies {
     implementation project(path: ':touchdemo')
     implementation project(path: ':downloaddemo')
     implementation project(path: ':animation')
-    implementation project(path: ':util')
+    implementation project(path: ':common')
     implementation project(path: ':roomdemo')
+    implementation project(path: ':bugreport')
 }

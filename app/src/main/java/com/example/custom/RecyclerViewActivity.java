@@ -13,7 +13,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
@@ -21,10 +20,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.custom.example.RecyclerViewDemoActivity;
-import com.custom.savedb.GreenDaoActivity;
 import com.example.animation.AnimationActivity;
 import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
+import com.example.bugreport.BugreportActivity;
 import com.example.custom.activity.BezierActivity;
 import com.example.custom.activity.CustomViewActivity;
 import com.example.custom.activity.DataBaseActivity;
@@ -44,13 +43,12 @@ import com.example.custom.activity.WidgetActivity;
 import com.example.custom.activity.WindowActivity;
 import com.example.custom.recyclerview.ItemBean;
 import com.example.custom.recyclerview.ItemSpaceDecoration;
-import com.example.roomdemo.MainRoomActivity;
-import com.example.util.KLog;
-import com.example.util.ManifestUtil;
+import com.example.common.KLog;
+import com.example.common.util.ManifestUtil;
 import com.example.custom.recyclerview.CustomRecyclerViewAdapter;
 //import com.example.custom.recyclerview.ItemSpaceDecoration;
-import com.example.util.ShareUtil;
-import com.example.util.UriUtil;
+import com.example.common.util.ShareUtil;
+import com.example.common.util.UriUtil;
 import com.example.customutil.UtilActivity;
 import com.example.demo.TouchActivity;
 import com.example.eventbus.EventBusActivity;
@@ -97,7 +95,7 @@ public class RecyclerViewActivity extends Activity {
             DataBaseActivity.class,
             GlideActivity.class,                EventBusActivity.class,         SelectDeleteRecyclerViewActivity.class,
             UtilActivity.class,                 TouchActivity.class,            PropertyAnimatorActivity.class,
-            RetrofitRxjavaDownloadActivity.class,
+            RetrofitRxjavaDownloadActivity.class,   BugreportActivity.class,
     };
 
     @Override
