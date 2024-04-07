@@ -20,15 +20,17 @@ public class BugreportActivity extends AppCompatActivity {
     private static final String TAG = "BugreportActivity";
     private Context mContext = BugreportActivity.this;
     private RecyclerView mBugreportRecyclerView;
+    private BugreportManager mBugreportManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bugreport);
 
+        mBugreportManager = new BugreportManager(mContext);
         List<ListItem> mList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ListItem listItem = new ListItem("test" + i);
+        for (int i = 0; i < BugreportManager.BUG_NAME_LIST.length; i++) {
+            ListItem listItem = new ListItem(BugreportManager.BUG_NAME_LIST[i]);
             mList.add(listItem);
         }
         ListRecyclerViewAdapter listRecyclerViewAdapter = new ListRecyclerViewAdapter(
@@ -43,7 +45,7 @@ public class BugreportActivity extends AppCompatActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        KLog.i(TAG, "" + position);
+                        mBugreportManager.bugTest(position);
                     }
                 });
             }

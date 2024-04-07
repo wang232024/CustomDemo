@@ -130,6 +130,7 @@ public class RecyclerViewActivity extends Activity {
         mWidth = metrics.widthPixels;
         mHeight = metrics.heightPixels;
         mDensity = metrics.density;
+        KLog.i(TAG, "mWidth:" + mWidth + ", mHeight:" + mHeight + ", mDensity:" + mDensity);
 
         // 列表宽高
         mRecyclerviewWidth = (getPercent(guideline_recyclerview_right) - getPercent(guideline_recyclerview_left)) * mWidth;
