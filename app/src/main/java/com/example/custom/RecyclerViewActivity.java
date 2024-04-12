@@ -182,6 +182,8 @@ public class RecyclerViewActivity extends Activity {
 //        });
 //        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemTouchHelperCallback);
 //        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        ExeCommand.testExeCommand();
     }
 
     private void initView() {
