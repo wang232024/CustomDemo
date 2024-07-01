@@ -13,6 +13,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
@@ -160,6 +161,19 @@ public class RecyclerViewActivity extends Activity {
         ItemSpaceDecoration decoration = new ItemSpaceDecoration(mRecyclerviewWidth, mItemWidth, mSpanCouont, 0);
 //        ItemSpaceDecoration decoration = new ItemSpaceDecoration(mRecyclerviewWidth, mRecyclerViewItemInterval, mSpanCouont, 1);
         mRecyclerView.addItemDecoration(decoration);
+
+        // 滑动过程中不加载图片，滑动停止后加载
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    // 恢复Glide加载图片
+                } else {
+                    // 禁止Glide加载图片
+                }
+            }
+        });
 
 //        //给RecyclerView设置ItemTouchHelper，可拖拽
 //        ItemTouchHelperCallback itemTouchHelperCallback = new ItemTouchHelperCallback();
