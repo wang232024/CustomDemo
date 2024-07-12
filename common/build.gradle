@@ -39,3 +39,18 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }
+
+// 命令行输入
+// ./gradlew makeJar
+// 打包生成jar包
+task clearJar(type: Delete) {
+    delete 'build/libs/cloudFolder.jar'////这行表示如果你已经打过一次包了，再进行打包则把原来的包删掉
+}
+
+task makeJar(type: Copy) {
+    from('build/intermediates/aar_main_jar/release/') //这行表示要打包的文件的路径，根据下面的内容，其实是该路径下的classes.jar
+    into('libs/')  //这行表示打包完毕后包的生成路径，也就是生成的包存在哪
+    include('classes.jar')  //看到这行，如果你对分包有了解的话，你就可以看出来这行它只是将一些类打包了
+    rename ('classes.jar', 'cloudFolder.jar')
+}
+makeJar.dependsOn(clearJar, build)
