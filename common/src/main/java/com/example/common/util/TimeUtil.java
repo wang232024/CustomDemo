@@ -65,6 +65,13 @@ public class TimeUtil {
         return strTz;
     }
 
+    // 获取当前设置的时区值，如中国+8
+    public static int getCurrentTimeZoneOffset() {
+        TimeZone tz = TimeZone.getDefault();
+        long currentTimeMillis = System.currentTimeMillis();
+        return tz.getOffset(currentTimeMillis) / (60 * 60 * 1000);
+    }
+
     //    测试网址  https://tool.chinaz.com/Tools/unixtime.aspx
     public static void testTimeUtil() {
         long timeStamp = getFormatedDateLong("2019-11-28_14-26-35_729");
