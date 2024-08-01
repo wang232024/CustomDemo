@@ -25,6 +25,7 @@ import com.example.animation.AnimationActivity;
 import com.example.animation.PropertyAnimatorActivity;
 import com.example.basedesignlayout.BaseDesignLayoutActivity;
 import com.example.bugreport.BugreportActivity;
+import com.example.common.Switch;
 import com.example.custom.activity.BezierActivity;
 import com.example.custom.activity.CustomViewActivity;
 import com.example.custom.activity.DataBaseActivity;
@@ -109,6 +110,8 @@ public class RecyclerViewActivity extends Activity {
         initData();
         fillData();
         initBroadcast();
+
+        Switch.test(this);
     }
 
     private BroadcastReceiver mBroadcastReceiver = null;
