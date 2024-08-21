@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.common.util.RxjavaUtil;
 import com.example.custom.R;
 import com.example.custom.view.CustomDialog;
 
@@ -58,8 +59,12 @@ public class WindowActivity extends Activity {
         mTipView.setVisibility(View.GONE);
 
         Button btn = findViewById(android.R.id.list);
-        btn.setOnClickListener(v -> {
-            Log.i(TAG, "456");
+
+        RxjavaUtil.throttleFirstClick(btn, 300, new RxjavaUtil.RxjavaUtilListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "456");
+            }
         });
     }
 

@@ -1,10 +1,15 @@
 package com.example.custom;
 
 import android.app.Application;
+import android.content.ContentResolver;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.StrictMode;
+import android.provider.Settings;
 
 public class CustomApplication extends Application {
-
+    public static final String SettingsContentObserver_VALUE = "mySettings";
     // 是否开启StrictMode严苛模式
     private static final boolean DEVELOPER_MODE = false;
 
@@ -34,5 +39,19 @@ public class CustomApplication extends Application {
          */
 
         super.onCreate();
+
+        // 注册监听监听特定的Settings URI (在合适的时候注销监听)
+        Uri mySettingsUri = Settings.System.getUriFor(SettingsContentObserver_VALUE);
+        // 获取ContentResolver
+        ContentResolver contentResolver = getContentResolver();
+
+        // 创建Handler并与主线程绑定
+        HandlerThread handlerThread = new HandlerThread("SettingsContentObserver");
+        handlerThread.start();
+        Handler handler = new Handler(handlerThread.getLooper());
+
+        // 创建ContentObserver实例并注册
+        SettingsContentObserver settingsContentObserver = new SettingsContentObserver(handler, this);
+        contentResolver.registerContentObserver(mySettingsUri, false, settingsContentObserver);
     }
 }
