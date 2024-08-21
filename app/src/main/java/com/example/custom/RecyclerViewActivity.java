@@ -20,6 +20,7 @@ import androidx.constraintlayout.widget.Guideline;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.launcher3.util.SQLiteCacheHelper;
 import com.custom.example.RecyclerViewDemoActivity;
 import com.example.animation.AnimationActivity;
 import com.example.animation.PropertyAnimatorActivity;
@@ -112,6 +113,12 @@ public class RecyclerViewActivity extends Activity {
         initBroadcast();
 
         Switch.test(this);
+
+        /**
+         * app模块依赖的common模块依赖local_lib_aar，其中包含SQLiteCacheHelper类，无法直接调用
+         * 需要app模块和common模块均以api依赖local_lib_aar
+         */
+        SQLiteCacheHelper sqLiteCacheHelper;
     }
 
     private BroadcastReceiver mBroadcastReceiver = null;

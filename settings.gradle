@@ -23,3 +23,5 @@ include ':animation'
 include ':common'
 include ':roomdemo'
 include ':bugreport'
+// include模块的路径
+include ':common:dirA:dirB:local_lib_aar'

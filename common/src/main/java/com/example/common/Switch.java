@@ -4,6 +4,8 @@ import android.content.Context;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.android.launcher3.util.SQLiteCacheHelper;
+
 /**
  * 设置/获取开关变量，用于adb控制等场景
  */
@@ -29,6 +31,9 @@ public class Switch {
         Log.i(TAG, "mySettingsSystem:" + mySettingsSystem);
         Log.i(TAG, "mySettingsGlobal:" + mySettingsGlobal);
         Log.i(TAG, "mySettingsSecure:" + mySettingsSecure);
+
+        // 子模块依赖aar文件 local_lib_aar
+        SQLiteCacheHelper sqLiteCacheHelper;
     }
 
 }
