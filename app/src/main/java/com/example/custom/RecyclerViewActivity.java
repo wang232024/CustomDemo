@@ -60,11 +60,13 @@ import com.example.glide.GlideActivity;
 import com.example.selectdelete.SelectDeleteRecyclerViewActivity;
 import com.example.tablayoutactivity.TabLayoutActivity;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewActivity extends Activity {
-    private static final String TAG = "wtx_RecyclerViewActivity";
+    private static final String TAG = "RecyclerViewActivity";
     private Context mContext = RecyclerViewActivity.this;
     private CustomRecyclerViewAdapter mCustomRecyclerViewAdapter;
     private List<ItemBean> mList = new ArrayList<>();
@@ -319,4 +321,15 @@ public class RecyclerViewActivity extends Activity {
             registerReceiver(mBroadcastReceiver, intentFilter);
         }
     }
+
+    @Override
+    public void dump(@NonNull String prefix, @Nullable FileDescriptor fd, @NonNull PrintWriter writer, @Nullable String[] args) {
+        super.dump(prefix, fd, writer, args);
+        // adb shell dumpsys activity com.example.custom.RecyclerViewActivity
+        writer.println("RecyclerViewActivity+++++++++++++++++++++++++++");
+        writer.println("BUILD_TYPE:" + BuildConfig.DEBUG);
+        writer.println("mWidth:" + mWidth + ", mHeight:" + mHeight + ", mDensity:" + mDensity);
+        writer.println("RecyclerViewActivity---------------------------");
+    }
+
 }

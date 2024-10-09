@@ -15,13 +15,16 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.example.custom.BuildConfig;
 import com.example.custom.R;
 import com.example.custom.activity.IntentActivity;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+
 public class CustomService extends IntentService {
-    private Context mContext = CustomService.this;
-//    private static final String TAG = "WTX_CustomService";
-    private static final String TAG = "wtx";
+    private final Context mContext = CustomService.this;
+    private static final String TAG = "CustomService";
     private static final String NAME = "CustomService";
     private static final String FOREGROUND_SERVICE_CHANNEL_ID = "FOREGROUND_SERVICE_CHANNEL_ID";
 
@@ -113,4 +116,13 @@ public class CustomService extends IntentService {
         return builder.build();
     }
 
+    @Override
+    protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
+        super.dump(fd, writer, args);
+        // adb shell dumpsys activity service com.example.custom.service.CustomService
+        writer.println("CustomService+++++++++++++++++++++++++++");
+        writer.println("BUILD_TYPE:" + BuildConfig.BUILD_TYPE);
+        writer.println("FOREGROUND_SERVICE_CHANNEL_ID:" + FOREGROUND_SERVICE_CHANNEL_ID);
+        writer.println("CustomService---------------------------");
+    }
 }

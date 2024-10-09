@@ -11,6 +11,8 @@
 .DS_Store
 /build
 /captures
+# **两个相邻的星号符号匹配任何文件或零个或多个目录
+common/**/build
 .externalNativeBuild
 .cxx
 local.properties
