@@ -71,7 +71,7 @@ public class RetrofitRxjavaDownloadActivity extends AppCompatActivity {
         }
     };
 
-    private DownloadManager.OnDownloadListener mOnDownloadListener = new DownloadManager.OnDownloadListener() {
+    private final DownloadManager.OnDownloadListener mOnDownloadListener = new DownloadManager.OnDownloadListener() {
         @Override
         public void onStart(DownloadInfo downloadInfo) {
             KLog.w("onStart");

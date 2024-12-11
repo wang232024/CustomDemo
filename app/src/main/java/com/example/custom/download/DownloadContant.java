@@ -7,7 +7,9 @@ public class DownloadContant {
 
             "https://image.baidu.com/search/down?tn=download&word=download&ie=utf8&fr=detail&url=https%3A%2F%2Fpic.rmb.bdstatic.com%2Fa09108f788792a9f8c55da4112aa0fb5.jpeg&thumburl=https%3A%2F%2Fimg0.baidu.com%2Fit%2Fu%3D2902595229%2C3607614383%26fm%3D253%26fmt%3Dauto%26app%3D138%26f%3DJPEG%3Fw%3D800%26h%3D500",
 
-            "https://qmuiteam.com/download/android/qmui_2.0.0-alpha07.apk",
+//            "https://qmuiteam.com/download/android/qmui_2.0.0-alpha07.apk",
+//            "https://cyzr2020.oss-cn-beijing.aliyuncs.com/%E8%A7%86%E9%A2%91/%E6%A3%AE%E7%84%B6%E9%AD%94%E7%AC%9B_x264.mp4",
+            "http://hbfile.huabanimg.com/android/huaban-android.apk",
     };
     // curl -I https://pics0.baidu.com/feed/2f738bd4b31c870111bddad9cb7f84260708ff94.jpeg@f_auto?token=3df01d02e2f9e9ed95fe34b634f4e45d
     // accept-ranges: bytes表示该响应头表明服务器支持Range请求,以及服务器所支持的单位是字节(这也是唯一可用的单位)

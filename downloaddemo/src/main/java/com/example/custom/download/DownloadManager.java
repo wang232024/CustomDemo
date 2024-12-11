@@ -39,7 +39,8 @@ public class DownloadManager {
     private int mDisposeReason = 0; // 停止原因
     private ObservableEmitter<DownloadInfo> mObservableEmitter;
     private ObservableEmitter<DownloadInfo.STATE> mDelayEmitter;
-
+    private long mTimeBegin;
+    private long mTimeFinish;
     private WeakReference<OnDownloadListener> mOnDownloadListenerWeakReference;
     public interface OnDownloadListener {
         void onStart(DownloadInfo downloadInfo);
@@ -165,6 +166,8 @@ public class DownloadManager {
                             count += wr;
                             is.close();
                             randomAccessFile.close();
+                            mTimeFinish = System.currentTimeMillis();
+                            KLog.i("waste:" + ((mTimeFinish - mTimeBegin) / 1000) + "s");
                         } catch (Exception e) {
                             KLog.e("e:" + e);
                             if (e instanceof FileNotFoundException) {
@@ -223,6 +226,7 @@ public class DownloadManager {
         mDownloadInfo.setState(DownloadInfo.STATE.START);
         mObservableEmitter.onNext(mDownloadInfo);
 
+        mTimeBegin = System.currentTimeMillis();
         download();
     }
 
